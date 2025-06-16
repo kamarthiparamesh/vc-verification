@@ -1,103 +1,209 @@
-import Image from "next/image";
+"use client";
+import { useEffect, useState } from "react";
+import QRCode from "react-qr-code";
+import JSONPretty from "react-json-pretty";
+import "react-json-pretty/themes/monikai.css";
+import { webCallback, webSocketUrl } from "@/variables";
+import { v4 as uuidv4 } from "uuid";
+import Link from "next/link";
+
+type Status =
+  | "waiting"
+  | "received"
+  | "validating"
+  | "verifying"
+  | "success"
+  | "failure";
+
+const statusLabel: Record<Status, string> = {
+  waiting: "Waiting for scan...",
+  received: "Response received!",
+  validating: "Validating...",
+  verifying: "Verifying...",
+  success: "✅ Verified!",
+  failure: "❌ Verification Failed",
+};
+
+const statusColor: Record<Status, string> = {
+  waiting: "text-gray-500",
+  received: "text-yellow-500",
+  validating: "text-blue-500",
+  verifying: "text-indigo-500",
+  success: "text-green-600",
+  failure: "text-red-600",
+};
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+  const [status, setStatus] = useState<Status>("waiting");
+  const [jsonResponse, setJsonResponse] = useState<any>(null);
+  const [errorMessages, setErrorMessages] = useState<string[]>([]);
+  const [openidUrl, setOpenidUrl] = useState("");
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
+  const generateURL = () => {
+    const response_uri = webCallback;
+    const client_metadata = {
+      name: "affinidi-verifier",
+    };
+    const requestId = uuidv4();
+    const transactionId = uuidv4();
+    const presentation_definition = {
+      id: "vp token example",
+      purpose:
+        "Relying party is requesting your digital ID for the purpose of Self-Authentication",
+      format: {
+        ldp_vc: {
+          proof_type: [
+            "RsaSignature2018",
+            "EcdsaSecp256k1Signature2019",
+            "Ed25519Signature2020",
+          ],
+        },
+      },
+      input_descriptors: [
+        {
+          id: "id card credential",
+          format: {
+            ldp_vc: {
+              proof_type: [
+                "Ed25519Signature2020",
+                "RsaSignature2018",
+                "EcdsaSecp256k1Signature2019",
+              ],
+            },
+          },
+          constraints: {
+            fields: [
+              {
+                path: ["$.credentialSubject.email"],
+                filter: {
+                  type: "string",
+                  pattern: "@gmail.com",
+                },
+              },
+            ],
+          },
+        },
+      ],
+    };
+
+    const rawParams =
+      `client_id=https://injiverify.dev1.mosip.net` +
+      `&transactionId=${transactionId}` +
+      `&presentation_definition=${JSON.stringify(presentation_definition)}` +
+      `&response_type=vp_token` +
+      `&response_mode=direct_post` +
+      `&nonce=NUfki5MRgXXmMgXHDeX/6Q==` +
+      `&state=${requestId}` +
+      `&response_uri=${response_uri}` +
+      `&client_metadata=${JSON.stringify(client_metadata)}`;
+    const encoded = btoa(rawParams);
+    const openidurl = `openid4vp://authorize?${encoded}`;
+    setOpenidUrl(openidurl);
+
+    console.log("Generated OpenID URL:", openidurl);
+  };
+
+  useEffect(() => {
+    generateURL();
+    const ws = new WebSocket(`${webSocketUrl}/ws`);
+
+    ws.onmessage = async (event) => {
+      console.log("WebSocket message received:", event.data);
+      if (event.data === "ping") {
+        //setStatus("waiting");
+        return;
+      }
+      setErrorMessages([]);
+      setStatus("received");
+      const data = JSON.parse(event.data);
+      setJsonResponse(data);
+
+      await handleVerify(data);
+    };
+
+    return () => {
+      console.log("Closing WebSocket connection");
+      ws.close();
+    };
+  }, []);
+
+  const handleVerify = async (data: any) => {
+    try {
+      setStatus("verifying");
+      const response = await fetch("/api/verify", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          data_received: data,
+        }),
+      });
+
+      const result = await response.json();
+
+      console.log("Verification result:", result);
+      setStatus(result.isValid ? "success" : "failure");
+
+      if (!result.isValid) {
+        const normalizedErrors = Array.isArray(result.errors)
+          ? result.errors
+          : [result.errors];
+        setErrorMessages(normalizedErrors);
+      }
+    } catch (err: any) {
+      console.error(err);
+      setStatus("failure");
+      setErrorMessages([err.message || "Unknown error occurred"]);
+    }
+  };
+
+  return (
+    <div className="flex min-h-screen">
+      {/* LEFT SIDE */}
+      <div className="w-1/2 bg-gray-100 p-10 flex flex-col justify-center">
+        <h1 className="text-3xl font-bold mb-2">
+          Affinidi: Credential Verification
+        </h1>
+        <h2 className="text-xl mb-4 text-gray-700">
+          Share your Email Credential
+        </h2>
+        <p className="text-gray-600 mb-6">
+          Scan the QR code to open your wallet app. You’ll review and share
+          credentials with full control. Affinidi handles the verification and
+          onboarding securely.
+        </p>
+        <QRCode value={openidUrl} size={300} />
+        <div className="mt-6 text-sm text-blue-600">
+          <Link
             target="_blank"
-            rel="noopener noreferrer"
+            href="/respond"
+            className="underline hover:text-blue-800"
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+            Or click here to send a mock response manually
+          </Link>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      </div>
+
+      {/* RIGHT SIDE */}
+      <div className="w-1/2 p-10">
+        <h2 className="text-2xl font-semibold mb-4">Response Status</h2>
+        <div className={`font-bold mb-4 ${statusColor[status]}`}>
+          {statusLabel[status]}
+        </div>
+        {status === "failure" && errorMessages.length > 0 && (
+          <div className="text-sm text-red-500 space-y-1 mb-4">
+            {errorMessages.map((err, idx) => (
+              <div key={idx}>• {err}</div>
+            ))}
+          </div>
+        )}
+        <div className="bg-gray-900 rounded p-4 text-white overflow-auto max-h-[500px]">
+          {jsonResponse ? (
+            <JSONPretty data={jsonResponse}></JSONPretty>
+          ) : (
+            <p className="text-gray-400">Awaiting response...</p>
+          )}
+        </div>
+      </div>
     </div>
   );
 }
