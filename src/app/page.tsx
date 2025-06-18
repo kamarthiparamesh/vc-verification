@@ -50,35 +50,14 @@ export default function Home() {
       id: "vp token example",
       purpose:
         "Relying party is requesting your digital ID for the purpose of Self-Authentication",
-      format: {
-        ldp_vc: {
-          proof_type: [
-            "RsaSignature2018",
-            "EcdsaSecp256k1Signature2019",
-            "Ed25519Signature2020",
-          ],
-        },
-      },
       input_descriptors: [
         {
           id: "id card credential",
-          format: {
-            ldp_vc: {
-              proof_type: [
-                "Ed25519Signature2020",
-                "RsaSignature2018",
-                "EcdsaSecp256k1Signature2019",
-              ],
-            },
-          },
           constraints: {
             fields: [
               {
-                path: ["$.credentialSubject.email"],
-                filter: {
-                  type: "string",
-                  pattern: "@gmail.com",
-                },
+                path: ["$.credentialSubject.type"],
+                filter: { type: "string", pattern: "degreeCertificate15" },
               },
             ],
           },
@@ -87,7 +66,7 @@ export default function Home() {
     };
 
     const rawParams =
-      `client_id=https://injiverify.dev1.mosip.net` +
+      `client_id=https://verify.credissuer.com` +
       `&transactionId=${transactionId}` +
       `&presentation_definition=${JSON.stringify(presentation_definition)}` +
       `&response_type=vp_token` +
@@ -95,12 +74,12 @@ export default function Home() {
       `&nonce=NUfki5MRgXXmMgXHDeX/6Q==` +
       `&state=${requestId}` +
       `&response_uri=${response_uri}` +
+      // `&response_uri=https://app.credissuer.com/api/verifier/vp/presentation/86/vp-response` +
       `&client_metadata=${JSON.stringify(client_metadata)}`;
     const encoded = btoa(rawParams);
     const openidurl = `openid4vp://authorize?${encoded}`;
+    console.log("Raw OpenID URL:", `openid4vp://authorize?${rawParams}`);
     setOpenidUrl(openidurl);
-
-    console.log("Generated OpenID URL:", openidurl);
   };
 
   useEffect(() => {
