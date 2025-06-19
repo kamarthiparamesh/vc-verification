@@ -66,7 +66,7 @@ export default function Home() {
     };
 
     const rawParams =
-      `client_id=https://verify.credissuer.com` +
+      `client_id=https://injiverify.dev1.mosip.net` +
       `&transactionId=${transactionId}` +
       `&presentation_definition=${JSON.stringify(presentation_definition)}` +
       `&response_type=vp_token` +
@@ -74,6 +74,7 @@ export default function Home() {
       `&nonce=NUfki5MRgXXmMgXHDeX/6Q==` +
       `&state=${requestId}` +
       `&response_uri=${response_uri}` +
+      // `&response_uri=https://e1ae-2401-4900-1cbc-deb0-7c90-c84b-6052-fd40.ngrok-free.app/verifier/vp-response` +
       // `&response_uri=https://app.credissuer.com/api/verifier/vp/presentation/86/vp-response` +
       `&client_metadata=${JSON.stringify(client_metadata)}`;
     const encoded = btoa(rawParams);

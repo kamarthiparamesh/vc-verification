@@ -45,7 +45,7 @@ app.get('/', (req, res) => {
 });
 
 app.post('/ooru/callback', (req: Request, res: Response) => {
-    console.log("Got response from ooru", req);
+    console.log("Got response from ooru", req.body, req.params, req.query);
     const payload = req.body;
 
     if (webSocketClient && webSocketClient.readyState === WebSocket.OPEN) {

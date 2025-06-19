@@ -1,0 +1,109 @@
+{
+    "verifiableCredential": [
+        {
+            "format": "ldp_vc",
+            "identifier": "iiitb-ac:OpenId4VCI:cred:web:did.credissuer.com:48522182-c12e-469b-816d-640c281e393e",
+            "generatedOn": "2025-06-18T07:04:23.751Z",
+            "vcMetadata": {
+                "idType": "",
+                "requestId": "cred",
+                "isPinned": false,
+                "id": "cred + '_' + iiitb-ac",
+                "issuer": "iiitb-ac",
+                "protocol": "OpenId4VCI",
+                "timestamp": "",
+                "isVerified": true,
+                "displayId": "603C6F4979A8",
+                "format": "ldp_vc",
+                "downloadKeyType": "RS256"
+            },
+            "verifiableCredential": {
+                "credential": {
+                    "@context": [
+                        "https://www.w3.org/2018/credentials/v1",
+                        {
+                            "rollNumber": {
+                                "@id": "schema-id:rollNumber",
+                                "@type": "https://schema.org/Text"
+                            },
+                            "recipientName": {
+                                "@id": "schema-id:recipientName",
+                                "@type": "https://schema.org/Text"
+                            },
+                            "programmeLine1": {
+                                "@id": "schema-id:programmeLine1",
+                                "@type": "https://schema.org/Text"
+                            },
+                            "programmeLine2": {
+                                "@id": "schema-id:programmeLine2",
+                                "@type": "https://schema.org/Text"
+                            },
+                            "recipientEmail": {
+                                "@id": "schema-id:recipientEmail",
+                                "@type": "https://schema.org/Text"
+                            },
+                            "recipientPhone": {
+                                "@id": "schema-id:recipientPhone",
+                                "@type": "https://schema.org/Text"
+                            },
+                            "descriptionLine3": {
+                                "@id": "schema-id:descriptionLine3",
+                                "@type": "https://schema.org/Text"
+                            },
+                            "descriptionLine4": {
+                                "@id": "schema-id:descriptionLine4",
+                                "@type": "https://schema.org/Text"
+                            }
+                        }
+                    ],
+                    "credentialSubject": {
+                        "id": "did:web:staging-did.credissuer.com:335d848f-1b03-48ea-bac5-0d075a3d7086",
+                        "type": "degreeCertificate15",
+                        "rollNumber": "2045678345",
+                        "recipientName": "John Doe",
+                        "programmeLine1": "Executive Post Graduate Programme in Data",
+                        "programmeLine2": "Science and Artificial Intelligence",
+                        "recipientEmail": "example@gmail.com",
+                        "recipientPhone": "9999999999",
+                        "descriptionLine3": "on 30th June 2024",
+                        "descriptionLine4": "with specialization in Business Analytics",
+                        "fullName": "John Doe",
+                        "credential_id": "603C6F4979A8",
+                        "public_verify_url": "http://127.0.0.1:8000/credentials/verify/3feb5ba75bd54610d219535b97bc272ccbf7fdbfbf483effb558b72530a7ca14",
+                        "email": "example@gmail.com",
+                        "qr_code": "https://staging-cdn.credissuer.com/media/vc_presentation_files/603C6F4979A8/qr_presentation_603C6F4979A8.png?Expires=1750316661&Signature=eBglWGfdh0xzP6Dl0O0FVuy71DTD2QrHI466oSB3c5~jclFUYWZVKez9kKoW1UlbLNdaDhmCvPHbWHP6fHR-9f80Oao5ghk-sLnSmmVHZwpm61cTs3Z82ynlmi10GCfCOFRRKkHV2iU1Ty5FCt9-mfd~NpbBxARBsSFZ7gdlaQGOMIl5xci1LXW1iP06iRgsZT1Hd45tHyEPaE~kjXjvdbyH-ilcPXWU2GdkYIXa-IBh1z-P9e34u8~q91nhx0mBSVX8oNW~RWTz8LhdB~-Paljax8D3nYQlCMQl8XvJ6aSkmFemIrDRg7PwaVZSmnNS83i69AqgcCwAoznFEwOwRg__&Key-Pair-Id=K2D5CDWBLG6LIC"
+                    },
+                    "id": "cred:web:did.credissuer.com:48522182-c12e-469b-816d-640c281e393e",
+                    "issuanceDate": "2025-06-13T11:36:29.792Z",
+                    "issuer": "did:key:zQ3sheZGT2rqZ58hFsUfjCMrB96Kkd4cGk4Zu6j5EaL6MXzid",
+                    "proof": {
+                        "created": "2025-06-13T11:36:29Z",
+                        "jws": "eyJhbGciOiJFUzI1NksiLCJiNjQiOmZhbHNlLCJjcml0IjpbImI2NCJdfQ..JluZz1ZwFNZnRHP7az2LE62vZl4YFgjKeFXoMSz7PiZdwvGLunhvBxQ2sGDt1CPmwTeuTWJ5M8WKGxbG5Zr5XQ",
+                        "proofPurpose": "assertionMethod",
+                        "type": "EcdsaSecp256k1Signature2019",
+                        "verificationMethod": "did:key:zQ3sheZGT2rqZ58hFsUfjCMrB96Kkd4cGk4Zu6j5EaL6MXzid#zQ3sheZGT2rqZ58hFsUfjCMrB96Kkd4cGk4Zu6j5EaL6MXzid"
+                    },
+                    "type": [
+                        "VerifiableCredential"
+                    ]
+                },
+                "wellKnown": "https://credissuer-public-assets.s3.ap-south-1.amazonaws.com/wellknown_endpoints/STAGING/iiitb-ac.json",
+                "credentialConfigurationId": "degreeCertificate",
+                "issuerLogo": {
+                    "url": "https://credissuer-public-assets.s3.ap-south-1.amazonaws.com/issuer-assets/7a9b1b9dd2e433fc.png",
+                    "alt_text": "IIIT Bangalore Logo"
+                }
+            }
+        }
+    ],
+    "id": "91096f5c-5277-4be2-bbf3-b7c94c04c3a1",
+    "holder": "",
+    "proof": {
+        "type": "RsaSignature2018",
+        "created": "2025-06-18T12:37:29Z",
+        "challenge": "S8toQcUrPTdDYh1DAY6Lqg",
+        "domain": "OpenID4VP",
+        "jws": "eyJhbGciOiJSUzI1NiIsImp3ayI6eyJrdHkiOiJSU0EiLCJraWQiOiJxU3NTRW1MM3gwdm9nR09SS0ViNmNPcTctY0hSdTdvVmdERmNFQkJHVXIwIiwibiI6InVWZWxsd24tc3dRZkdzbldZWlF4MHVZX1pqZ25WVXFSSXhERmt0bE1sci01eS1iREZFUll1a2kzb1NzdllLSVEydkl6c3hXZnJvaUZ2UXBHalN2MUVoci0zRTgxYkluOERTc2ROaGxXRHdmX2VqdEFTT3I4d3lVNU5rUkppYlNsZy1ibFE5bUE2eHg2QWZhTXRMUXAzNzZYU3ZuR1UwOHFzdEVYTjljLXR5SEI1YlVFUHNNVGF3eG52NWtHX3J4Y3NyNW9jRFZJOGlUT2lodmZNM0w5elV3NGk4QUlGLUVEOElFTnNqeU5STFEwOUxHZERNM0NFeUtPa0xzREdNSWtYSlhvUk1UUjNNYzRzWGVrSmJBR3NzQnlYdDR2azY2Y1llUlN2bFBOUUlhU0IzNVZmNy1MSkpEN1dOSG11NGl1cVdqaTFYYmthWUd5WW5UUmVJYmI3USIsImUiOiJBUUFCIiwiYWxnIjoiUlMyNTYiLCJ1c2UiOiJzaWcifX0.eyJ2ZXJpZmlhYmxlQ3JlZGVudGlhbCI6WyJ7XCJmb3JtYXRcIjpcImxkcF92Y1wiLFwiaWRlbnRpZmllclwiOlwiaWlpdGItYWM6T3BlbklkNFZDSTpjcmVkOndlYjpkaWQuY3JlZGlzc3Vlci5jb206NDg1MjIxODItYzEyZS00NjliLTgxNmQtNjQwYzI4MWUzOTNlXCIsXCJnZW5lcmF0ZWRPblwiOlwiMjAyNS0wNi0xOFQwNzowNDoyMy43NTFaXCIsXCJ2Y01ldGFkYXRhXCI6e1wiaWRUeXBlXCI6XCJcIixcInJlcXVlc3RJZFwiOlwiY3JlZFwiLFwiaXNQaW5uZWRcIjpmYWxzZSxcImlkXCI6XCJjcmVkICsgJ18nICsgaWlpdGItYWNcIixcImlzc3VlclwiOlwiaWlpdGItYWNcIixcInByb3RvY29sXCI6XCJPcGVuSWQ0VkNJXCIsXCJ0aW1lc3RhbXBcIjpcIlwiLFwiaXNWZXJpZmllZFwiOnRydWUsXCJkaXNwbGF5SWRcIjpcIjYwM0M2RjQ5NzlBOFwiLFwiZm9ybWF0XCI6XCJsZHBfdmNcIixcImRvd25sb2FkS2V5VHlwZVwiOlwiUlMyNTZcIn0sXCJ2ZXJpZmlhYmxlQ3JlZGVudGlhbFwiOntcImNyZWRlbnRpYWxcIjp7XCJAY29udGV4dFwiOltcImh0dHBzOi8vd3d3LnczLm9yZy8yMDE4L2NyZWRlbnRpYWxzL3YxXCIse1wicm9sbE51bWJlclwiOntcIkBpZFwiOlwic2NoZW1hLWlkOnJvbGxOdW1iZXJcIixcIkB0eXBlXCI6XCJodHRwczovL3NjaGVtYS5vcmcvVGV4dFwifSxcInJlY2lwaWVudE5hbWVcIjp7XCJAaWRcIjpcInNjaGVtYS1pZDpyZWNpcGllbnROYW1lXCIsXCJAdHlwZVwiOlwiaHR0cHM6Ly9zY2hlbWEub3JnL1RleHRcIn0sXCJwcm9ncmFtbWVMaW5lMVwiOntcIkBpZFwiOlwic2NoZW1hLWlkOnByb2dyYW1tZUxpbmUxXCIsXCJAdHlwZVwiOlwiaHR0cHM6Ly9zY2hlbWEub3JnL1RleHRcIn0sXCJwcm9ncmFtbWVMaW5lMlwiOntcIkBpZFwiOlwic2NoZW1hLWlkOnByb2dyYW1tZUxpbmUyXCIsXCJAdHlwZVwiOlwiaHR0cHM6Ly9zY2hlbWEub3JnL1RleHRcIn0sXCJyZWNpcGllbnRFbWFpbFwiOntcIkBpZFwiOlwic2NoZW1hLWlkOnJlY2lwaWVudEVtYWlsXCIsXCJAdHlwZVwiOlwiaHR0cHM6Ly9zY2hlbWEub3JnL1RleHRcIn0sXCJyZWNpcGllbnRQaG9uZVwiOntcIkBpZFwiOlwic2NoZW1hLWlkOnJlY2lwaWVudFBob25lXCIsXCJAdHlwZVwiOlwiaHR0cHM6Ly9zY2hlbWEub3JnL1RleHRcIn0sXCJkZXNjcmlwdGlvbkxpbmUzXCI6e1wiQGlkXCI6XCJzY2hlbWEtaWQ6ZGVzY3JpcHRpb25MaW5lM1wiLFwiQHR5cGVcIjpcImh0dHBzOi8vc2NoZW1hLm9yZy9UZXh0XCJ9LFwiZGVzY3JpcHRpb25MaW5lNFwiOntcIkBpZFwiOlwic2NoZW1hLWlkOmRlc2NyaXB0aW9uTGluZTRcIixcIkB0eXBlXCI6XCJodHRwczovL3NjaGVtYS5vcmcvVGV4dFwifX1dLFwiY3JlZGVudGlhbFN1YmplY3RcIjp7XCJpZFwiOlwiZGlkOndlYjpzdGFnaW5nLWRpZC5jcmVkaXNzdWVyLmNvbTozMzVkODQ4Zi0xYjAzLTQ4ZWEtYmFjNS0wZDA3NWEzZDcwODZcIixcInR5cGVcIjpcImRlZ3JlZUNlcnRpZmljYXRlMTVcIixcInJvbGxOdW1iZXJcIjpcIjIwNDU2NzgzNDVcIixcInJlY2lwaWVudE5hbWVcIjpcIkpvaG4gRG9lXCIsXCJwcm9ncmFtbWVMaW5lMVwiOlwiRXhlY3V0aXZlIFBvc3QgR3JhZHVhdGUgUHJvZ3JhbW1lIGluIERhdGFcIixcInByb2dyYW1tZUxpbmUyXCI6XCJTY2llbmNlIGFuZCBBcnRpZmljaWFsIEludGVsbGlnZW5jZVwiLFwicmVjaXBpZW50RW1haWxcIjpcImV4YW1wbGVAZ21haWwuY29tXCIsXCJyZWNpcGllbnRQaG9uZVwiOlwiOTk5OTk5OTk5OVwiLFwiZGVzY3JpcHRpb25MaW5lM1wiOlwib24gMzB0aCBKdW5lIDIwMjRcIixcImRlc2NyaXB0aW9uTGluZTRcIjpcIndpdGggc3BlY2lhbGl6YXRpb24gaW4gQnVzaW5lc3MgQW5hbHl0aWNzXCIsXCJmdWxsTmFtZVwiOlwiSm9obiBEb2VcIixcImNyZWRlbnRpYWxfaWRcIjpcIjYwM0M2RjQ5NzlBOFwiLFwicHVibGljX3ZlcmlmeV91cmxcIjpcImh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9jcmVkZW50aWFscy92ZXJpZnkvM2ZlYjViYTc1YmQ1NDYxMGQyMTk1MzViOTdiYzI3MmNjYmY3ZmRiZmJmNDgzZWZmYjU1OGI3MjUzMGE3Y2ExNFwiLFwiZW1haWxcIjpcImV4YW1wbGVAZ21haWwuY29tXCIsXCJxcl9jb2RlXCI6XCJodHRwczovL3N0YWdpbmctY2RuLmNyZWRpc3N1ZXIuY29tL21lZGlhL3ZjX3ByZXNlbnRhdGlvbl9maWxlcy82MDNDNkY0OTc5QTgvcXJfcHJlc2VudGF0aW9uXzYwM0M2RjQ5NzlBOC5wbmc_RXhwaXJlcz0xNzUwMzE2NjYxJlNpZ25hdHVyZT1lQmdsV0dmZGgweHpQNkRsME8wRlZ1eTcxRFREMlFySEk0NjZvU0IzYzV-amNsRlVZV1pWS2V6OWtLb1cxVWxiTE5kYURobUN2UEhiV0hQNmZIUi05ZjgwT2FvNWdoay1zTG5TbW1WSFp3cG02MWNUczNaODJ5bmxtaTEwR0NmQ09GUlJLa0hWMmlVMVR5NUZDdDktbWZkfk5wYkJ4QVJCc1NGWjdnZGxhUUdPTUlsNXhjaTFMWFcxaVAwNmlSZ3NaVDFIZDQ1dEh5RVBhRX5ralhqdmRieUgtaWxjUFhXVTJHZGtZSVhhLUlCaDF6LVA5ZTM0dTh-cTkxbmh4MG1CU1ZYOG9OV35SV1R6OExoZEJ-LVBhbGpheDhEM25ZUWxDTVFsOFh2SjZhU2ttRmVtSXJEUmc3UHdhVlpTbW5OUzgzaTY5QXFnY0N3QW96bkZFd093UmdfXyZLZXktUGFpci1JZD1LMkQ1Q0RXQkxHNkxJQ1wifSxcImlkXCI6XCJjcmVkOndlYjpkaWQuY3JlZGlzc3Vlci5jb206NDg1MjIxODItYzEyZS00NjliLTgxNmQtNjQwYzI4MWUzOTNlXCIsXCJpc3N1YW5jZURhdGVcIjpcIjIwMjUtMDYtMTNUMTE6MzY6MjkuNzkyWlwiLFwiaXNzdWVyXCI6XCJkaWQ6a2V5OnpRM3NoZVpHVDJycVo1OGhGc1VmakNNckI5NktrZDRjR2s0WnU2ajVFYUw2TVh6aWRcIixcInByb29mXCI6e1wiY3JlYXRlZFwiOlwiMjAyNS0wNi0xM1QxMTozNjoyOVpcIixcImp3c1wiOlwiZXlKaGJHY2lPaUpGVXpJMU5rc2lMQ0ppTmpRaU9tWmhiSE5sTENKamNtbDBJanBiSW1JMk5DSmRmUS4uSmx1WnoxWndGTlpuUkhQN2F6MkxFNjJ2Wmw0WUZnaktlRlhvTVN6N1BpWmR3dkdMdW5odkJ4UTJzR0R0MUNQbXdUZXVUV0o1TThXS0d4Ykc1WnI1WFFcIixcInByb29mUHVycG9zZVwiOlwiYXNzZXJ0aW9uTWV0aG9kXCIsXCJ0eXBlXCI6XCJFY2RzYVNlY3AyNTZrMVNpZ25hdHVyZTIwMTlcIixcInZlcmlmaWNhdGlvbk1ldGhvZFwiOlwiZGlkOmtleTp6UTNzaGVaR1QycnFaNThoRnNVZmpDTXJCOTZLa2Q0Y0drNFp1Nmo1RWFMNk1YemlkI3pRM3NoZVpHVDJycVo1OGhGc1VmakNNckI5NktrZDRjR2s0WnU2ajVFYUw2TVh6aWRcIn0sXCJ0eXBlXCI6W1wiVmVyaWZpYWJsZUNyZWRlbnRpYWxcIl19LFwid2VsbEtub3duXCI6XCJodHRwczovL2NyZWRpc3N1ZXItcHVibGljLWFzc2V0cy5zMy5hcC1zb3V0aC0xLmFtYXpvbmF3cy5jb20vd2VsbGtub3duX2VuZHBvaW50cy9TVEFHSU5HL2lpaXRiLWFjLmpzb25cIixcImNyZWRlbnRpYWxDb25maWd1cmF0aW9uSWRcIjpcImRlZ3JlZUNlcnRpZmljYXRlXCIsXCJpc3N1ZXJMb2dvXCI6e1widXJsXCI6XCJodHRwczovL2NyZWRpc3N1ZXItcHVibGljLWFzc2V0cy5zMy5hcC1zb3V0aC0xLmFtYXpvbmF3cy5jb20vaXNzdWVyLWFzc2V0cy83YTliMWI5ZGQyZTQzM2ZjLnBuZ1wiLFwiYWx0X3RleHRcIjpcIklJSVQgQmFuZ2Fsb3JlIExvZ29cIn19fSJdLCJpZCI6IjkxMDk2ZjVjLTUyNzctNGJlMi1iYmYzLWI3Yzk0YzA0YzNhMSIsImhvbGRlciI6IiJ9.MZmjOQmzI4GnxzlQqKdnxlMkC6MnTSHYtvr0r7LeRo-0dYif9zeA-EVxjNZ_6s76Vkm_wtdUuXmM\nQQGHIxRRx2z0VLFqOm_8OhzlokN9vR69iwT8S8xnEyMJjmDa0rRSXMQnTXesMIPL8bw5GdkK9x53\nZ9XkQ7aptEXuwyQcq2N7sN4m5PVCZbugGSJcuyrIzF9T7Ce7fUUofasYqZqsjDDB0PIij8gz0AZP\n7U8Wy1COddKK6fcYFNUlD58Lh78PN2nXy8075O4DAX2gyiSPpF6vGrONJGRGpzUvQ7HHCbwAfZpH\nooBZsMuDF4H6bHkzfr6SQNvzReSMu9V8M5gJCA==\n",
+        "verificationMethod": "-----BEGIN PUBLIC KEY-----\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAuVellwn+swQfGsnWYZQx\n0uY/ZjgnVUqRIxDFktlMlr+5y+bDFERYuki3oSsvYKIQ2vIzsxWfroiFvQpGjSv1\nEhr+3E81bIn8DSsdNhlWDwf/ejtASOr8wyU5NkRJibSlg+blQ9mA6xx6AfaMtLQp\n376XSvnGU08qstEXN9c+tyHB5bUEPsMTawxnv5kG/rxcsr5ocDVI8iTOihvfM3L9\nzUw4i8AIF+ED8IENsjyNRLQ09LGdDM3CEyKOkLsDGMIkXJXoRMTR3Mc4sXekJbAG\nssByXt4vk66cYeRSvlPNQIaSB35Vf7+LJJD7WNHmu4iuqWji1XbkaYGyYnTReIbb\n7QIDAQAB\n-----END PUBLIC KEY-----\n"
+    }
+}

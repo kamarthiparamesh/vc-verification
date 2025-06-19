@@ -1,0 +1,302 @@
+{
+    "pex_request": {
+        "id": "token_with_identity_fullname_vc",
+        "input_descriptors": [
+            {
+                "id": "email_vc",
+                "name": "Email VC",
+                "purpose": "Check if Vault contains the required VC.",
+                "constraints": {
+                    "fields": [
+                        {
+                            "path": [
+                                "$.type"
+                            ],
+                            "purpose": "Check if VC type is correct",
+                            "filter": {
+                                "type": "array",
+                                "contains": {
+                                    "type": "string",
+                                    "pattern": "^Email$"
+                                }
+                            }
+                        },
+                        {
+                            "path": [
+                                "$.credentialSubject.email"
+                            ],
+                            "purpose": "Check if VC contains email field",
+                            "filter": {
+                                "type": "string"
+                            }
+                        }
+                    ]
+                }
+            },
+            {
+                "id": "profile_name",
+                "name": "Profile Name",
+                "purpose": "Check if data contains necessary fields",
+                "constraints": {
+                    "fields": [
+                        {
+                            "path": [
+                                "$.type"
+                            ],
+                            "purpose": "Check if VC type is correct",
+                            "filter": {
+                                "type": "array",
+                                "contains": {
+                                    "type": "string",
+                                    "pattern": "^HITFullName$"
+                                }
+                            }
+                        },
+                        {
+                            "path": [
+                                "$.credentialSubject.familyName"
+                            ]
+                        },
+                        {
+                            "path": [
+                                "$.credentialSubject.givenName"
+                            ]
+                        },
+                        {
+                            "path": [
+                                "$.credentialSubject.middleName"
+                            ]
+                        }
+                    ]
+                }
+            },
+            {
+                "id": "profile_identity_birthdate",
+                "name": "Profile Identity",
+                "purpose": "Check if data contains necessary fields",
+                "constraints": {
+                    "fields": [
+                        {
+                            "path": [
+                                "$.type"
+                            ],
+                            "purpose": "Check if VC type is correct",
+                            "filter": {
+                                "type": "array",
+                                "contains": {
+                                    "type": "string",
+                                    "pattern": "^HITBirthdate$"
+                                }
+                            }
+                        },
+                        {
+                            "path": [
+                                "$.credentialSubject.birthdate"
+                            ]
+                        }
+                    ]
+                }
+            },
+            {
+                "id": "profile_identity_gender",
+                "name": "Profile Identity",
+                "purpose": "Check if data contains necessary fields",
+                "constraints": {
+                    "fields": [
+                        {
+                            "path": [
+                                "$.type"
+                            ],
+                            "purpose": "Check if VC type is correct",
+                            "filter": {
+                                "type": "array",
+                                "contains": {
+                                    "type": "string",
+                                    "pattern": "^HITGender$"
+                                }
+                            }
+                        },
+                        {
+                            "path": [
+                                "$.credentialSubject.gender"
+                            ]
+                        }
+                    ]
+                }
+            }
+        ]
+    },
+    "vp_token": {
+        "verifiablePresentation": {
+            "@context": [
+                "https://www.w3.org/2018/credentials/v1"
+            ],
+            "id": "claimId:vWkb8GbXdr9ZEVBZbjXFv",
+            "holder": {
+                "id": "did:key:zQ3shqeuTqstXCVKL4peLhxmmLTjYSyoeCoPasx3vK3PQPf6i"
+            },
+            "proof": {
+                "type": "EcdsaSecp256k1Signature2019",
+                "created": "2025-06-19T05:26:50Z",
+                "verificationMethod": "did:key:zQ3shqeuTqstXCVKL4peLhxmmLTjYSyoeCoPasx3vK3PQPf6i#zQ3shqeuTqstXCVKL4peLhxmmLTjYSyoeCoPasx3vK3PQPf6i",
+                "proofPurpose": "authentication",
+                "challenge": "bdd66bdcc9d0feb3f76ad2db1e6c39f6",
+                "domain": "did:key:zQ3shhmaa8qwXh95nNN1ANVFTvvBat4auQvb3Pm61NKWKJNwv",
+                "jws": "eyJhbGciOiJFUzI1NksiLCJiNjQiOmZhbHNlLCJjcml0IjpbImI2NCJdfQ..UTKmAC0hGNoIQsld4yZ7pqqPUU6_WB2sjghTypJxfyJ086Ps0gmb3K6I1L4b7PZynEG0zr8p9dEqZPXtHO26-A"
+            },
+            "type": [
+                "VerifiablePresentation"
+            ],
+            "verifiableCredential": [
+                {
+                    "@context": [
+                        "https://www.w3.org/2018/credentials/v1",
+                        "https://schema.affinidi.com/EmailV1-0.jsonld"
+                    ],
+                    "credentialSchema": {
+                        "id": "https://schema.affinidi.com/EmailV1-0.json",
+                        "type": "JsonSchemaValidator2018"
+                    },
+                    "credentialSubject": {
+                        "email": "paramesh.k@affinidi.com"
+                    },
+                    "holder": {
+                        "id": "did:key:zQ3shqeuTqstXCVKL4peLhxmmLTjYSyoeCoPasx3vK3PQPf6i"
+                    },
+                    "id": "claimId:f8a35252a2bcc9b5",
+                    "issuanceDate": "2023-11-23T04:59:31.058Z",
+                    "issuer": "did:key:zQ3shtMGCU89kb2RMknNZcYGUcHW8P6Cq3CoQyvoDs7Qqh33N",
+                    "proof": {
+                        "type": "EcdsaSecp256k1Signature2019",
+                        "created": "2023-11-23T04:59:34Z",
+                        "proofPurpose": "assertionMethod",
+                        "verificationMethod": "did:key:zQ3shtMGCU89kb2RMknNZcYGUcHW8P6Cq3CoQyvoDs7Qqh33N#zQ3shtMGCU89kb2RMknNZcYGUcHW8P6Cq3CoQyvoDs7Qqh33N",
+                        "jws": "eyJhbGciOiJFUzI1NksiLCJiNjQiOmZhbHNlLCJjcml0IjpbImI2NCJdfQ..XO9KiaSiiXeNBkkPspbfQjdwG-k2J0AufjshvA2U3XdD6UZiwAwgRQ8tFbG7LbTjjXpHNmkM1Y-bSUQ11NGghQ"
+                    },
+                    "type": [
+                        "VerifiableCredential",
+                        "Email"
+                    ]
+                },
+                {
+                    "@context": [
+                        "https://www.w3.org/2018/credentials/v1",
+                        "https://schema.affinidi.io/HITFullNameV1R0.jsonld"
+                    ],
+                    "credentialSchema": {
+                        "id": "https://schema.affinidi.io/HITFullNameV1R0.json",
+                        "type": "JsonSchemaValidator2018"
+                    },
+                    "credentialSubject": {
+                        "givenName": "Paramesh",
+                        "familyName": "Kamarthi ",
+                        "middleName": "-"
+                    },
+                    "holder": {
+                        "id": "did:key:zQ3shqeuTqstXCVKL4peLhxmmLTjYSyoeCoPasx3vK3PQPf6i"
+                    },
+                    "id": "claimId:m2QFrm8Boywxmts6D8-eo",
+                    "issuanceDate": "2025-06-19T10:56:50.185",
+                    "issuer": "did:key:zQ3shqeuTqstXCVKL4peLhxmmLTjYSyoeCoPasx3vK3PQPf6i",
+                    "proof": {
+                        "type": "EcdsaSecp256k1Signature2019",
+                        "created": "2025-06-19T05:26:50Z",
+                        "verificationMethod": "did:key:zQ3shqeuTqstXCVKL4peLhxmmLTjYSyoeCoPasx3vK3PQPf6i#zQ3shqeuTqstXCVKL4peLhxmmLTjYSyoeCoPasx3vK3PQPf6i",
+                        "proofPurpose": "assertionMethod",
+                        "jws": "eyJhbGciOiJFUzI1NksiLCJiNjQiOmZhbHNlLCJjcml0IjpbImI2NCJdfQ..68dDhxEcKVBch0fr_Yce1yqy5uhihLIdW8OndGh2Wy9D1SCtEwvr2jMCcij-qxlrPyzGz835SUCK3KXNHAWmRA"
+                    },
+                    "type": [
+                        "VerifiableCredential",
+                        "HITFullName"
+                    ]
+                },
+                {
+                    "@context": [
+                        "https://www.w3.org/2018/credentials/v1",
+                        "https://schema.affinidi.io/HITBirthdateV1R2.jsonld"
+                    ],
+                    "credentialSchema": {
+                        "id": "https://schema.affinidi.io/HITBirthdateV1R2.json",
+                        "type": "JsonSchemaValidator2018"
+                    },
+                    "credentialSubject": {
+                        "birthdate": "1983-08-24"
+                    },
+                    "holder": {
+                        "id": "did:key:zQ3shqeuTqstXCVKL4peLhxmmLTjYSyoeCoPasx3vK3PQPf6i"
+                    },
+                    "id": "claimId:M35C3qv-QklflqKQkLzEH",
+                    "issuanceDate": "2025-06-19T10:56:49.555",
+                    "issuer": "did:key:zQ3shqeuTqstXCVKL4peLhxmmLTjYSyoeCoPasx3vK3PQPf6i",
+                    "proof": {
+                        "type": "EcdsaSecp256k1Signature2019",
+                        "created": "2025-06-19T05:26:49Z",
+                        "verificationMethod": "did:key:zQ3shqeuTqstXCVKL4peLhxmmLTjYSyoeCoPasx3vK3PQPf6i#zQ3shqeuTqstXCVKL4peLhxmmLTjYSyoeCoPasx3vK3PQPf6i",
+                        "proofPurpose": "assertionMethod",
+                        "jws": "eyJhbGciOiJFUzI1NksiLCJiNjQiOmZhbHNlLCJjcml0IjpbImI2NCJdfQ..bbTzKXm5SEIQS0vVfWgeRrwRYZz9slEJecGe52X9Un5hwZJBoaJyVTyPjX9vu25gyawqUiwKGFSUaKe12ahuUA"
+                    },
+                    "type": [
+                        "VerifiableCredential",
+                        "HITBirthdate"
+                    ]
+                },
+                {
+                    "@context": [
+                        "https://www.w3.org/2018/credentials/v1",
+                        "https://schema.affinidi.io/HITGenderV1R0.jsonld"
+                    ],
+                    "credentialSchema": {
+                        "id": "https://schema.affinidi.io/HITGenderV1R0.json",
+                        "type": "JsonSchemaValidator2018"
+                    },
+                    "credentialSubject": {
+                        "gender": "male"
+                    },
+                    "holder": {
+                        "id": "did:key:zQ3shqeuTqstXCVKL4peLhxmmLTjYSyoeCoPasx3vK3PQPf6i"
+                    },
+                    "id": "claimId:AuyApkYZoeZkelAjW-uCZ",
+                    "issuanceDate": "2025-06-19T10:56:49.910",
+                    "issuer": "did:key:zQ3shqeuTqstXCVKL4peLhxmmLTjYSyoeCoPasx3vK3PQPf6i",
+                    "proof": {
+                        "type": "EcdsaSecp256k1Signature2019",
+                        "created": "2025-06-19T05:26:49Z",
+                        "verificationMethod": "did:key:zQ3shqeuTqstXCVKL4peLhxmmLTjYSyoeCoPasx3vK3PQPf6i#zQ3shqeuTqstXCVKL4peLhxmmLTjYSyoeCoPasx3vK3PQPf6i",
+                        "proofPurpose": "assertionMethod",
+                        "jws": "eyJhbGciOiJFUzI1NksiLCJiNjQiOmZhbHNlLCJjcml0IjpbImI2NCJdfQ..DFXqCg3kmigWxrz83BFzQyfTWeLO6lj9V94Aegg9NzhSuLMH_xBnDNcaffFK4NbLkTWRmF7jYxTtwqaxI6W29A"
+                    },
+                    "type": [
+                        "VerifiableCredential",
+                        "HITGender"
+                    ]
+                }
+            ]
+        },
+        "presentationSubmission": {
+            "id": "liAqqjqLD0iREQDLNfOVW",
+            "definition_id": "token_with_identity_fullname_vc",
+            "descriptor_map": [
+                {
+                    "id": "email_vc",
+                    "path": "$.verifiableCredential[0]",
+                    "format": "ldp_vc"
+                },
+                {
+                    "id": "profile_name",
+                    "path": "$.verifiableCredential[1]",
+                    "format": "ldp_vc"
+                },
+                {
+                    "id": "profile_identity_birthdate",
+                    "path": "$.verifiableCredential[2]",
+                    "format": "ldp_vc"
+                },
+                {
+                    "id": "profile_identity_gender",
+                    "path": "$.verifiableCredential[3]",
+                    "format": "ldp_vc"
+                }
+            ]
+        }
+    }
+}
