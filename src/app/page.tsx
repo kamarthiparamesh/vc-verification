@@ -5,6 +5,7 @@ import JSONPretty from "react-json-pretty";
 import "react-json-pretty/themes/monikai.css";
 import { webCallback, webSocketUrl } from "@/variables";
 import { v4 as uuidv4 } from "uuid";
+import crypto from "crypto";
 import Link from "next/link";
 
 type Status =
@@ -44,8 +45,9 @@ export default function Home() {
     const client_metadata = {
       name: "affinidi-verifier",
     };
-    const requestId = uuidv4();
     const transactionId = uuidv4();
+    const nonce = crypto.randomBytes(16).toString("base64");
+    const state = crypto.randomBytes(16).toString("base64");
     const presentation_definition = {
       id: "vp token example",
       purpose:
@@ -71,8 +73,8 @@ export default function Home() {
       `&presentation_definition=${JSON.stringify(presentation_definition)}` +
       `&response_type=vp_token` +
       `&response_mode=direct_post` +
-      `&nonce=NUfki5MRgXXmMgXHDeX/6Q==` +
-      `&state=${requestId}` +
+      `&nonce=${nonce}` +
+      `&state=${state}` +
       `&response_uri=${response_uri}` +
       // `&response_uri=https://e1ae-2401-4900-1cbc-deb0-7c90-c84b-6052-fd40.ngrok-free.app/verifier/vp-response` +
       // `&response_uri=https://app.credissuer.com/api/verifier/vp/presentation/86/vp-response` +
@@ -95,10 +97,25 @@ export default function Home() {
       }
       setErrorMessages([]);
       setStatus("received");
-      const data = JSON.parse(event.data);
-      setJsonResponse(data);
+      try {
+        const data = JSON.parse(event.data);
+        setJsonResponse(data);
+        let credential = data;
+        const { vp_token, presentation_submission, state } = data;
+        if (vp_token) {
+          const vpToken = JSON.parse(vp_token);
+          const vc = JSON.parse(vpToken.verifiableCredential[0]);
+          console.log("Parsed VP Token:", vc);
+          credential = vc.verifiableCredential.credential;
+        }
 
-      await handleVerify(data);
+        await handleVerify(credential);
+      } catch (err: any) {
+        console.error("Error parsing WebSocket message:", err);
+        setStatus("failure");
+        setErrorMessages([err.message || "Failed to parse response"]);
+        return;
+      }
     };
 
     return () => {

@@ -11,7 +11,10 @@ let webSocketClient: WebSocket;
 // Setup Express
 const app = express();
 app.use(cors({ credentials: true, origin: true }));
+// For JSON data
 app.use(express.json());
+// For form-urlencoded data
+app.use(express.urlencoded({ extended: true, limit: '20mb' }));
 
 // Create HTTP server
 const server = http.createServer(app);
@@ -45,8 +48,14 @@ app.get('/', (req, res) => {
 });
 
 app.post('/ooru/callback', (req: Request, res: Response) => {
-    console.log("Got response from ooru", req.body, req.params, req.query);
+    console.log("Got response from ooru", req.body);
     const payload = req.body;
+
+    const { vp_token, presentation_submission, state } = payload;
+    // if (!vp_token) {
+    //     res.status(400).json({ error: 'Missing required fields in the request body' });
+    //     return
+    // }
 
     if (webSocketClient && webSocketClient.readyState === WebSocket.OPEN) {
         webSocketClient.send(JSON.stringify(payload));
