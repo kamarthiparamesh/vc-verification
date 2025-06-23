@@ -1,0 +1,44 @@
+{
+    "nonce": "528534f1-e",
+    "state": "bec55021-4e78-4c36-bd9d-6c02c415e381/097c9b8f-d31e-4191-98f2-94f5cff3f120",
+    "client_id": "did:key:zQ3shYvNUXfUSGvgh7fTy2mExxMbBUJfNZLGTZVnD1heP22Cp",
+    "client_id_scheme": "did",
+    "response_uri": "https://apse1.api.affinidi.io/ais/v1/callback",
+    "client_metadata_uri": "https://apse1.api.affinidi.io/ais/v1/projects/801a212a-90b1-4463-bfb3-5235181d477d/configurations/da83a4f2-4b8d-4587-95f1-3bfa5e95a047/metadata",
+    "scope": "openid",
+    "response_type": "vp_token",
+    "response_mode": "direct_post",
+    "presentation_definition": {
+        "id": "event_ticket",
+        "input_descriptors": [
+            {
+                "id": "event_ticket",
+                "name": "EventTicket VC",
+                "purpose": "Check VC",
+                "constraints": {
+                    "fields": [
+                        {
+                            "path": [
+                                "$.type"
+                            ],
+                            "purpose": "VC Type Check",
+                            "filter": {
+                                "type": "array",
+                                "contains": {
+                                    "type": "string",
+                                    "pattern": "^EventTicketVC$"
+                                }
+                            }
+                        }
+                    ]
+                }
+            }
+        ]
+    },
+    "iat": 1750657215,
+    "exp": 1750657815,
+    "jti": "401054a0-faf3-4f38-97e2-8f929178c534",
+    "ari": "ari:iota_service:ap-southeast-1:801a212a-90b1-4463-bfb3-5235181d477d:iota_configuration/da83a4f2-4b8d-4587-95f1-3bfa5e95a047",
+    "query_ari": "ari:iota_service:ap-southeast-1:801a212a-90b1-4463-bfb3-5235181d477d:query/1cdfd46b-91f3-46d2-b937-64241b679677",
+    "iss": "did:key:zQ3shYvNUXfUSGvgh7fTy2mExxMbBUJfNZLGTZVnD1heP22Cp"
+}

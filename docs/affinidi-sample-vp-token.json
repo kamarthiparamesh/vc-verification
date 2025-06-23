@@ -1,0 +1,86 @@
+{
+    "state": "bec55021-4e78-4c36-bd9d-6c02c415e381/097c9b8f-d31e-4191-98f2-94f5cff3f120",
+    "presentation_submission": {
+        "descriptor_map": [
+            {
+                "id": "event_ticket",
+                "path": "$.verifiableCredential[0]",
+                "format": "ldp_vc"
+            }
+        ],
+        "id": "kcER8nQarq8sf9_a9Gq7n",
+        "definition_id": "event_ticket"
+    },
+    "vp_token": {
+        "@context": [
+            "https://www.w3.org/2018/credentials/v1"
+        ],
+        "type": [
+            "VerifiablePresentation"
+        ],
+        "verifiableCredential": [
+            {
+                "credentialSchema": {
+                    "type": "EventTicketVC",
+                    "id": "https://schema.affinidi.io/TEventTicketVCV1R0.json"
+                },
+                "credentialSubject": {
+                    "createdAt": "2024-09-20T12:09:14.625Z",
+                    "attendeeAtrributes": {
+                        "firstName": "Paramesh",
+                        "lastName": "Kamarthi",
+                        "dateOfBirth": "1983-08-24",
+                        "email": "paramesh.k@affinidi.com"
+                    },
+                    "secrete": "2024-09-20T12:09:14.625Z",
+                    "event": {
+                        "name": "JIU Asia",
+                        "eventId": "2",
+                        "location": "Singapore",
+                        "endDate": "2024-09-08T22:00:00.000Z",
+                        "startDate": "2024-09-06T18:00:00.000Z"
+                    },
+                    "ticket": {
+                        "seat": "General Adminsion",
+                        "ticketId": "2",
+                        "ticketType": "JIU Asia"
+                    }
+                },
+                "issuanceDate": "2024-09-17T12:12:19.606Z",
+                "holder": {
+                    "id": "did:key:zQ3shqeuTqstXCVKL4peLhxmmLTjYSyoeCoPasx3vK3PQPf6i"
+                },
+                "id": "claimId:1b10d3e5593a319e",
+                "type": [
+                    "VerifiableCredential",
+                    "EventTicketVC"
+                ],
+                "@context": [
+                    "https://www.w3.org/2018/credentials/v1",
+                    "https://schema.affinidi.io/TEventTicketVCV1R0.jsonld"
+                ],
+                "issuer": "did:key:zQ3shYvNUXfUSGvgh7fTy2mExxMbBUJfNZLGTZVnD1heP22Cp",
+                "proof": {
+                    "type": "EcdsaSecp256k1Signature2019",
+                    "created": "2024-09-17T12:12:41Z",
+                    "verificationMethod": "did:key:zQ3shYvNUXfUSGvgh7fTy2mExxMbBUJfNZLGTZVnD1heP22Cp#zQ3shYvNUXfUSGvgh7fTy2mExxMbBUJfNZLGTZVnD1heP22Cp",
+                    "proofPurpose": "assertionMethod",
+                    "jws": "eyJhbGciOiJFUzI1NksiLCJiNjQiOmZhbHNlLCJjcml0IjpbImI2NCJdfQ..4S580p3jzqRrrI5pMT_R08twVGa9Gfq27NuSILe107AEZAuvkb_dR_jDpzZQwuaVgqeog6MmS0rkwPsPuoBdfw"
+                }
+            }
+        ],
+        "holder": {
+            "id": "did:key:zQ3shqeuTqstXCVKL4peLhxmmLTjYSyoeCoPasx3vK3PQPf6i"
+        },
+        "id": "claimId:3C_5XiXGf9Lb0TAZZB_o_",
+        "proof": {
+            "type": "EcdsaSecp256k1Signature2019",
+            "created": "2025-06-23T05:40:22Z",
+            "verificationMethod": "did:key:zQ3shqeuTqstXCVKL4peLhxmmLTjYSyoeCoPasx3vK3PQPf6i#zQ3shqeuTqstXCVKL4peLhxmmLTjYSyoeCoPasx3vK3PQPf6i",
+            "proofPurpose": "authentication",
+            "challenge": "528534f1-e",
+            "domain": "did:key:zQ3shYvNUXfUSGvgh7fTy2mExxMbBUJfNZLGTZVnD1heP22Cp",
+            "jws": "eyJhbGciOiJFUzI1NksiLCJiNjQiOmZhbHNlLCJjcml0IjpbImI2NCJdfQ..iVN72v8iPN-ELpLCXp90E2Ww8G7hWLTdVlhf9SYpeuMTmcrwqJ6Y-tIz3uyVgzgSZvMXq9AeEwN7KgJMKKJwCw"
+        }
+    }
+}
