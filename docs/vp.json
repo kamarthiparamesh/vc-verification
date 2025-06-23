@@ -1,0 +1,80 @@
+{
+    "vp_token": {
+        "@context": [
+            "https://www.w3.org/2018/credentials/v1",
+            "https://w3id.org/security/suites/jws-2020/v1"
+        ],
+        "type": [
+            "VerifiablePresentation"
+        ],
+        "verifiableCredential": [
+            {
+                "issuanceDate": "2025-06-19T09:32:38.243Z",
+                "credentialSubject": {
+                    "benefits": [
+                        "Critical Surgery",
+                        "Full body checkup"
+                    ],
+                    "gender": "Male",
+                    "policyName": "wallet",
+                    "dob": "2025-01-01",
+                    "policyNumber": "5555",
+                    "mobile": "0123456789",
+                    "fullName": "wallet",
+                    "policyIssuedOn": "2023-04-20",
+                    "id": "did:jwk:eyJrdHkiOiJSU0EiLCJlIjoiQVFBQiIsInVzZSI6InNpZyIsImtpZCI6InVLZHBmTlNHMXhkeEFUUXZCZFA2aUlGaVZtYjJIZnpTSTY2NFJReHF0V28iLCJhbGciOiJSUzI1NiIsIm4iOiJyRk9PSU1kRjlfTm9xSXhiLVRBT0t3UVFiUXNtUVBuV0FkcmVFX3BtX1FtTjRaRDFNdk5sZ3lpMTRTQzhZdkI4aW02RWt5WUx1OEx5Z3hHcnYydmxSVUU0U2tRNHd0XzlnSGFlTDhlelZKV2lLWTRTX3k4ZzY1MThLbENnb0EyRnNyUC11RHl0T3BDdHNzelprYmd2eklsN0dMekV4UDRhVEkzTmhjYkRlNHFtWVZTa2c0RGE0TFpMMzdzOVdRaVlmZ190Z2xnbmVQQ3k0aTFnWFFYd0gtOHpmaFhWRDVvUWtta3FvdTNMUWFTR2JmajJtTXVMZU9lWVdSREJjSUpMNkV6OHNBNm4tMXdHU0tpTHhsRlUzMjZtdFdhbGttQ1RiVVZKQ2kwWENZSll5RWZmaV9ZekFCLXR1cmd5bEpMS3p4NGlfOWdaTmFQN0JQVl9qZEpnZ1EifQ==",
+                    "policyExpiresOn": "2033-04-20",
+                    "email": "abcd@gmail.com"
+                },
+                "id": "did:rcw:e44a4f90-1288-4d45-b1fd-8b44908a8c43",
+                "proof": {
+                    "proofPurpose": "assertionMethod",
+                    "verificationMethod": "did:web:api.released.mosip.net:identity-service:02b073b8-aacd-472e-b63f-265bb7ccdd9f#key-0",
+                    "proofValue": "z5d4Z6wo3nz5turienF3EBGXy5HCyN4NFatDPjTcQVatYoGKnkQhuNM8d9RtGRLcgq9D9PMbcp8PXG6Gr4rDMcsPJ",
+                    "type": "Ed25519Signature2020",
+                    "created": "2025-06-19T09:32:38Z"
+                },
+                "type": [
+                    "VerifiableCredential",
+                    "InsuranceCredential"
+                ],
+                "@context": [
+                    "https://www.w3.org/2018/credentials/v1",
+                    "https://holashchand.github.io/test_project/insurance-context.json",
+                    "https://w3id.org/security/suites/ed25519-2020/v1"
+                ],
+                "issuer": "did:web:api.released.mosip.net:identity-service:02b073b8-aacd-472e-b63f-265bb7ccdd9f",
+                "expirationDate": "2025-07-19T09:32:38.229Z"
+            }
+        ],
+        "id": "urn:uuid:d4f7292c-e2a7-474d-9e6d-5e35b19c62c7",
+        "holder": {
+            "id": "did:jwk:eyJrdHkiOiJPS1AiLCJjcnYiOiJFZDI1NTE5IiwieCI6IkZrcjZidFA3Mnk0aGgzWFZsdW5zcGNDQWRoVWR2dkNkYVBmVklTOEhVMzgiLCJhbGciOiJFZDI1NTE5IiwidXNlIjoic2lnIn0#0"
+        },
+        "proof": {
+            "type": "JsonWebSignature2020",
+            "created": "2025-06-19T15:44:56Z",
+            "challenge": "Y7/Mkkpr8LWht1ewMcOl9g",
+            "domain": "mock-client",
+            "jws": "eyJhbGciOiJFZERTQSIsImNyaXQiOlsiYjY0Il0sImI2NCI6ZmFsc2V9..FwXGIWSX_h2QEiIfL4x0XaZR4xD_xb_xODqcwH6oF94-nvVuOw5zoUqXUVwNRb2JdcQk-NEg_TGerW8eYAqxBg",
+            "proofPurpose": "authentication",
+            "verificationMethod": "did:jwk:eyJrdHkiOiJPS1AiLCJjcnYiOiJFZDI1NTE5IiwieCI6IkZrcjZidFA3Mnk0aGgzWFZsdW5zcGNDQWRoVWR2dkNkYVBmVklTOEhVMzgiLCJhbGciOiJFZDI1NTE5IiwidXNlIjoic2lnIn0#0"
+        }
+    },
+    "presentation_submission": {
+        "id": "urn:uuid:5580e048-b0c9-4b32-bcd5-3f0305e88438",
+        "definition_id": "vp token example",
+        "descriptor_map": [
+            {
+                "id": "id card credential",
+                "format": "ldp_vp",
+                "path": "$",
+                "path_nested": {
+                    "id": "id card credential",
+                    "format": "ldp_vc",
+                    "path": "$.VerifiableCredential[0]"
+                }
+            }
+        ]
+    }
+}
