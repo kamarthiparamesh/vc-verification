@@ -2,11 +2,18 @@ import { verifyCredentials, verifyPresentation } from '@/app/libs/credential-ver
 import { NextRequest, NextResponse } from 'next/server'
 
 function detectVCorVP(payload: any) {
-    if (!payload || typeof payload !== 'object') return "unknown";
-    const type = payload.type;
-    if (type.includes("VerifiablePresentation")) return "vp";
-    else if (type.includes("VerifiableCredential")) return "vc";
-    else return "unknown";
+    if (!payload) return "unknown";
+
+    if (Array.isArray(payload) && payload.some(item => item.type?.includes("VerifiableCredential"))) {
+        return "vc";
+    }
+
+    if (typeof payload === 'object') {
+        if (payload.type?.includes("VerifiablePresentation")) return "vp";
+        else if (payload.type?.includes("VerifiableCredential")) return "vc";
+    }
+
+    return "unknown";
 }
 
 export async function POST(req: NextRequest) {
@@ -24,7 +31,7 @@ export async function POST(req: NextRequest) {
             )
         } else if (type === "vc") {
             result = await verifyCredentials({
-                verifiableCredentials: [body.data_received],
+                verifiableCredentials: !Array.isArray(body.data_received) ? [body.data_received] : body.data_received,
             });
         } else if (type === "vp") {
             result = await verifyPresentation({

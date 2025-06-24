@@ -104,9 +104,13 @@ export default function Home() {
         const { vp_token, presentation_submission, state } = data;
         if (vp_token) {
           const vpToken = JSON.parse(vp_token);
-          const vc = JSON.parse(vpToken.verifiableCredential[0]);
-          console.log("Parsed VP Token:", vc);
-          credential = vc.verifiableCredential.credential;
+          credential = [];
+          for (const vcStr of vpToken.verifiableCredential) {
+            const vc = JSON.parse(vcStr);
+            if (vc?.verifiableCredential?.credential) {
+              credential.push(vc.verifiableCredential.credential);
+            }
+          }
         }
 
         await handleVerify(credential);
