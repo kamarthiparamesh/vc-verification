@@ -13,6 +13,8 @@
   "dependencies": {
     "@affinidi-tdk/auth-provider": "^1.31.2",
     "@affinidi-tdk/credential-verification-client": "^1.41.0",
+    "@affinidi/common": "^4.8.0",
+    "@affinidi/vc-common": "^2.1.2",
     "cors": "^2.8.5",
     "dotenv": "^16.5.0",
     "express": "^5.1.0",

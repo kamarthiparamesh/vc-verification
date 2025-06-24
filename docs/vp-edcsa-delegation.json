@@ -1,0 +1,81 @@
+{
+    "@context": [
+        "https://www.w3.org/2018/credentials/v1"
+    ],
+    "id": "claimId:abc1234",
+    "type": [
+        "VerifiablePresentation"
+    ],
+    "holder": {
+        "id": "did:key:zQ3shnxdfAGgcSoyaDNa12oLgSWFNMNnJz2QuxFp96JiXC5ug"
+    },
+    "verifiableCredential": [
+        {
+            "@context": [
+                "https://www.w3.org/2018/credentials/v1",
+                "https://d2oeuqaac90cm.cloudfront.net/TDelegationCredentialV1R0.jsonld"
+            ],
+            "id": "claimId:deleg123",
+            "type": [
+                "VerifiableCredential",
+                "DelegationCredential"
+            ],
+            "holder": {
+                "id": "did:key:zQ3shnxdfAGgcSoyaDNa12oLgSWFNMNnJz2QuxFp96JiXC5ug"
+            },
+            "credentialSubject": {
+                "delegationLevel": "full",
+                "credentials": [
+                    {
+                        "id": "claimId:12345678"
+                    }
+                ]
+            },
+            "issuanceDate": "2025-06-24T13:00:19.217Z",
+            "issuer": "did:key:zQ3shYGbjyTLsqqU9LtbGUbGFQeiTuyFFGoKGFe7NwV3yDZAe",
+            "proof": {
+                "type": "EcdsaSecp256k1Signature2019",
+                "created": "2025-06-24T13:00:19Z",
+                "verificationMethod": "did:key:zQ3shYGbjyTLsqqU9LtbGUbGFQeiTuyFFGoKGFe7NwV3yDZAe#zQ3shYGbjyTLsqqU9LtbGUbGFQeiTuyFFGoKGFe7NwV3yDZAe",
+                "proofPurpose": "assertionMethod",
+                "jws": "eyJhbGciOiJFUzI1NksiLCJiNjQiOmZhbHNlLCJjcml0IjpbImI2NCJdfQ..3DtGw-P8dYq0x-W4RH1hAyQTwh71TFpHhPmKDP-JjsYYVaWncqZwo1MeyeTOR8LgunhF5lqCB8fjUx_xdlyvBg"
+            }
+        },
+        {
+            "@context": [
+                "https://www.w3.org/2018/credentials/v1",
+                "https://schema.affinidi.com/PersonalProfileV1-0.jsonld"
+            ],
+            "id": "claimId:12345678",
+            "type": [
+                "VerifiableCredential",
+                "PersonalProfile"
+            ],
+            "holder": {
+                "id": "did:key:zQ3shYGbjyTLsqqU9LtbGUbGFQeiTuyFFGoKGFe7NwV3yDZAe"
+            },
+            "credentialSubject": {
+                "firstName": "Paramesh",
+                "email": "paramesh.k@affinidi.com"
+            },
+            "issuanceDate": "2025-06-24T13:00:18.356Z",
+            "issuer": "did:key:zQ3shog11CmXakeTQpNVm4QR4HpE7GV4vPvF15rcyfvFgKHp9",
+            "proof": {
+                "type": "EcdsaSecp256k1Signature2019",
+                "created": "2025-06-24T13:00:18Z",
+                "verificationMethod": "did:key:zQ3shog11CmXakeTQpNVm4QR4HpE7GV4vPvF15rcyfvFgKHp9#zQ3shog11CmXakeTQpNVm4QR4HpE7GV4vPvF15rcyfvFgKHp9",
+                "proofPurpose": "assertionMethod",
+                "jws": "eyJhbGciOiJFUzI1NksiLCJiNjQiOmZhbHNlLCJjcml0IjpbImI2NCJdfQ..i3gjhu-0pUUjL2FHG4uFLfqTk70NR6mPZ0nPJY6jIv93K_KUkmLW48to8aCmSFn6kzRbJkJQiUUViP3sYegJbg"
+            }
+        }
+    ],
+    "proof": {
+        "type": "EcdsaSecp256k1Signature2019",
+        "created": "2025-06-24T13:00:19Z",
+        "verificationMethod": "did:key:zQ3shnxdfAGgcSoyaDNa12oLgSWFNMNnJz2QuxFp96JiXC5ug#zQ3shnxdfAGgcSoyaDNa12oLgSWFNMNnJz2QuxFp96JiXC5ug",
+        "proofPurpose": "authentication",
+        "challenge": "my-challenge-test1",
+        "domain": "paramesh.com",
+        "jws": "eyJhbGciOiJFUzI1NksiLCJiNjQiOmZhbHNlLCJjcml0IjpbImI2NCJdfQ..nlRCnY7Iz1BARlYwEywdsSOpNwXW8s8duxdMRDSyWPlzWYvdmtQdhFIjKA2xPnLnEusZAFS6PZa2WMs5rHucsA"
+    }
+}

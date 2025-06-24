@@ -1,0 +1,32 @@
+{
+    "id": "did:web:marmot-suited-muskrat.ngrok-free.app",
+    "@context": "https://w3id.org/security/v2",
+    "publicKey": [
+        {
+            "id": "did:web:marmot-suited-muskrat.ngrok-free.app#primary",
+            "usage": "signing",
+            "type": "Secp256k1VerificationKey2018",
+            "publicKeyHex": "02d83b4be8cda9d440af32ec5e36d3d8aa13d9def688e7b4c8a5bc3584ae5b79d1"
+        },
+        {
+            "id": "did:web:marmot-suited-muskrat.ngrok-free.app#recovery",
+            "usage": "recovery",
+            "type": "Secp256k1VerificationKey2018",
+            "publicKeyHex": "02b6098737cf9f9782b581577cfa94f0ba3191a17cd32b23f0c42a4a54b441d2b4"
+        },
+        {
+            "id": "did:web:marmot-suited-muskrat.ngrok-free.app#secondary",
+            "usage": "signing",
+            "type": "RsaVerificationKey2018",
+            "publicKeyPem": "-----BEGIN PUBLIC KEY-----\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAzdSBhluJJ8xK0MtxtHme\nwmMLZ0X66h79lWphU/VI6F4cOsIoC/B00VI10CgYx+93dyvKMDdAnHj2+tKdFaxB\nejV+ngunj1QVGUH4eN+QF7g7xww/PxWFusau3oD3YFcEN/SU+L52osSSDFxAirRM\nRYFh1PR7zYnQMPZlR1wif/7wjLGS2dPwUrv577+YERHEAcNc9QhWlZKGCBCxKp1V\nhyq9GpnHGaHqRnLrtoJqgZft+rygx9dFkPRSKHpewWlgvW9F6NS9e5pud/GO7nNQ\nWSE9KMmBX8hhuJpjhT9fudPEm6sdfR7f3g7WvrnWqSJvLrGi/SMSLVHt4v9jvUel\n6wIDAQAB\n-----END PUBLIC KEY-----\n"
+        }
+    ],
+    "authentication": [
+        "did:web:marmot-suited-muskrat.ngrok-free.app#primary",
+        "did:web:marmot-suited-muskrat.ngrok-free.app#secondary"
+    ],
+    "assertionMethod": [
+        "did:web:marmot-suited-muskrat.ngrok-free.app#primary",
+        "did:web:marmot-suited-muskrat.ngrok-free.app#secondary"
+    ]
+}

@@ -1,0 +1,50 @@
+{
+    "@context": [
+        "https://www.w3.org/2018/credentials/v1"
+    ],
+    "id": "claimId:abc1234",
+    "type": [
+        "VerifiablePresentation"
+    ],
+    "holder": {
+        "id": "did:web:marmot-suited-muskrat.ngrok-free.app:user:paramesh"
+    },
+    "verifiableCredential": [
+        {
+            "@context": [
+                "https://www.w3.org/2018/credentials/v1",
+                "https://schema.affinidi.com/PersonalProfileV1-0.jsonld"
+            ],
+            "id": "claimId:12345678",
+            "type": [
+                "VerifiableCredential",
+                "PersonalProfile"
+            ],
+            "holder": {
+                "id": "did:web:marmot-suited-muskrat.ngrok-free.app:user:paramesh"
+            },
+            "credentialSubject": {
+                "firstName": "Paramesh",
+                "email": "paramesh.k@affinidi.com"
+            },
+            "issuanceDate": "2025-06-24T12:28:36.783Z",
+            "issuer": "did:web:marmot-suited-muskrat.ngrok-free.app:issuer:affinidi",
+            "proof": {
+                "type": "RsaSignature2018",
+                "created": "2025-06-24T12:28:36Z",
+                "verificationMethod": "did:web:marmot-suited-muskrat.ngrok-free.app:issuer:affinidi#secondary",
+                "proofPurpose": "assertionMethod",
+                "jws": "eyJhbGciOiJQUzI1NiIsImI2NCI6ZmFsc2UsImNyaXQiOlsiYjY0Il19..PB7AThGfY794kG70_NkZqh7jqGM2y-YqeMNNTCUaQxsKbAhJteWe2H0ASmtRJuxwe8yXjeFhKZZTPm3VP6qjPm42O__Iso5r_3paodUe6ez-2BYitJVbeqX_8KPqn34mdqSwmkOUrbn3S-qXg2cywrw9_6tlDHV4BDn5s61CarrWrG__M3DewCf9GUQub94zuys1Q03HHCnPM8Ymc0zE7uacsVu3DXssQv9wFZDM-Bzg58uVfhz0dY6V7BifO7nxHyitsYsobN5t5oNAf8JSZRPp5JBzTpFZKNI3DnxAkeaE8jCOFjo65qyl4vU1JfztfUx8KnDe0SeQNWTlJHHxWA"
+            }
+        }
+    ],
+    "proof": {
+        "type": "RsaSignature2018",
+        "created": "2025-06-24T12:28:41Z",
+        "verificationMethod": "did:web:marmot-suited-muskrat.ngrok-free.app:user:paramesh#secondary",
+        "proofPurpose": "authentication",
+        "challenge": "my-challenge-string",
+        "domain": "paramesh.com",
+        "jws": "eyJhbGciOiJQUzI1NiIsImI2NCI6ZmFsc2UsImNyaXQiOlsiYjY0Il19..s0W62jkW4O5Xp_5qPz2XCqBIzzCaW_-HpCpZgx1ERpc0M5fPrEUdVzW_jKX6BiYXL50uS-p6F2MA7y3-pvE2k-FeBGdizNqREJdgO2pwukQ-7bvT43yCO_XtiQxzN2WAq2lzf6m87rb06DePzfRPKiQ1FzJU53GatHLUNog36c0Q3_UnrkIETvKqQG7lELGRyRWP_F314p_9eYE9OYfxpZiE6VNafRLZDEet0w4korGOamtn6NpJlhocA15_PgGfd4xnGsgJKujeJDDTOx_SvIx7-wwrQpgoPekwS3hEMeb15LPnL4JW7hCSwO8V6dYAQQIvNq90AUn8VItno-eMFA"
+    }
+}

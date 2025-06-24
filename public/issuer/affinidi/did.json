@@ -1,0 +1,32 @@
+{
+    "id": "did:web:marmot-suited-muskrat.ngrok-free.app:issuer:affinidi",
+    "@context": "https://w3id.org/security/v2",
+    "publicKey": [
+        {
+            "id": "did:web:marmot-suited-muskrat.ngrok-free.app:issuer:affinidi#primary",
+            "usage": "signing",
+            "type": "Secp256k1VerificationKey2018",
+            "publicKeyHex": "03fa0516e532b183457cf91413a78e7f55983eee4e904625567cd946c1aaab5a9a"
+        },
+        {
+            "id": "did:web:marmot-suited-muskrat.ngrok-free.app:issuer:affinidi#recovery",
+            "usage": "recovery",
+            "type": "Secp256k1VerificationKey2018",
+            "publicKeyHex": "03f8e0cabfcdbdeaf29cf5ea7175929ef0d0e9b531a4968cee9ce65ffe8f83fd97"
+        },
+        {
+            "id": "did:web:marmot-suited-muskrat.ngrok-free.app:issuer:affinidi#secondary",
+            "usage": "signing",
+            "type": "RsaVerificationKey2018",
+            "publicKeyPem": "-----BEGIN PUBLIC KEY-----\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAqLvlrK4mWfL1rOxlgzdH\nFYViFI0jzkOYXg1JSAMHxGBybIpDZ6RsahgO/XXAgjtTObFyVyJNq+LrXUjCAqK1\nZQRTt7mpE/ElPvBToLPJV7cUuxLklD34QJoI+ruR87RC7UIyDshtPni7qpCZxB1u\nm0MZClLJIT5PllsQm4FGdSytHqYiqMAqFe4aGfRYUHBVS6yVFOn56PToOnfKjTq2\nBo4SI1A3noxuLclS2WBBfXs6Bhx68ccBxwellTNOlFMmQjkMt/Z6UXLBw7+rDidN\nwESVLgA5sBBFlZiN4XJj0Tns2BCUVEoGp3R6MGbKdtOh38BIFhnIs684ZBG6qzYQ\n2wIDAQAB\n-----END PUBLIC KEY-----\n"
+        }
+    ],
+    "authentication": [
+        "did:web:marmot-suited-muskrat.ngrok-free.app:issuer:affinidi#primary",
+        "did:web:marmot-suited-muskrat.ngrok-free.app:issuer:affinidi#secondary"
+    ],
+    "assertionMethod": [
+        "did:web:marmot-suited-muskrat.ngrok-free.app:issuer:affinidi#primary",
+        "did:web:marmot-suited-muskrat.ngrok-free.app:issuer:affinidi#secondary"
+    ]
+}
