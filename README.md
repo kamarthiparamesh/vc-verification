@@ -33,3 +33,9 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 - The Next.js frontend runs on port 3000.
 
 - A WebSocket server runs on port 4000 to listen for and handle incoming VC responses.
+
+## Run as a container
+
+```
+docker compose up -d
+```

@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import QRCode from "react-qr-code";
 import JSONPretty from "react-json-pretty";
 import "react-json-pretty/themes/monikai.css";
-import { webCallbackUrl, webSocketUrl, webVerifyUrl } from "@/variables";
+import { webUrl, webSocketUrl } from "@/variables";
 import { v4 as uuidv4 } from "uuid";
 import crypto from "crypto";
 import Link from "next/link";
@@ -41,7 +41,7 @@ export default function Home() {
   const [openidUrl, setOpenidUrl] = useState("");
 
   const generateURL = () => {
-    const response_uri = webCallbackUrl;
+    const response_uri = `${webUrl}/vp-response-callback`;
     const client_metadata = {
       name: "affinidi-verifier",
     };
@@ -132,7 +132,7 @@ export default function Home() {
   const handleVerify = async (data: any) => {
     try {
       setStatus("verifying");
-      const response = await fetch(webVerifyUrl, {
+      const response = await fetch(`${webUrl}/verify-credentials`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

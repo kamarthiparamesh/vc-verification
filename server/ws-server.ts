@@ -4,9 +4,13 @@ import cors from 'cors';
 import WebSocket, { WebSocketServer } from 'ws';
 import http from 'http';
 dotenv.config();
-import { hostName, webCallbackRoute, webPort, webPrefix, webVerifyRoute } from './variables';
-import { detectVCorVP } from './app/libs/utils';
-import { verifyCredentials, verifyPresentation } from './app/libs/credential-verifier';
+import { webPort, webSocketUrl, webUrl } from './variables';
+import { verifyCredentials, verifyPresentation } from './libs/credential-verifier';
+import { detectVCorVP } from './libs/utils';
+
+const webPrefix = '/backend'
+const webCallbackRoute = `vp-response-callback`;
+const webVerifyRoute = `verify-credentials`;
 
 let webSocketClient: WebSocket;
 
@@ -92,6 +96,6 @@ app.post(`${webPrefix}/${webVerifyRoute}`, async (req: Request, res: Response) =
 // Start both servers on same port
 server.listen(webPort, () => {
     console.log(`🚀 Express + WebSocket running on port ${webPort}`);
-    console.log(`   🔹 WS: ws://${hostName}:${webPort}/ws`);
-    console.log(`   🔹 HTTP POST: http://${hostName}:${webPort}/ooru/callback`);
+    console.log(`   🔹 WS: ${webSocketUrl}`);
+    console.log(`   🔹 HTTP: ${webUrl}`);
 });

@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "app": "next dev",
-    "ws": "npx ts-node --compiler-options '{\"module\":\"CommonJS\"}' src/ws-server.ts",
+    "ws": "npx ts-node --compiler-options '{\"module\":\"CommonJS\"}' server/ws-server.ts",
     "dev": "concurrently \"npm run ws\" \"npm run app\"",
     "build": "next build",
     "start": "next start",

@@ -3,7 +3,7 @@
 import { useState } from "react";
 import JSONPretty from "react-json-pretty";
 import { mockData } from "./mock-data";
-import { webCallbackUrl } from "@/variables";
+import { webUrl } from "@/variables";
 
 export default function RespondPage() {
   const [selectedKey, setSelectedKey] =
@@ -21,7 +21,7 @@ export default function RespondPage() {
   };
 
   const handleSubmit = async () => {
-    await fetch(webCallbackUrl, {
+    await fetch(`${webUrl}/vp-response-callback`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
