@@ -4,7 +4,9 @@ import cors from 'cors';
 import WebSocket, { WebSocketServer } from 'ws';
 import http from 'http';
 dotenv.config();
-import { hostName, webPort } from './variables';
+import { hostName, webCallbackRoute, webPort, webPrefix, webVerifyRoute } from './variables';
+import { detectVCorVP } from './app/libs/utils';
+import { verifyCredentials, verifyPresentation } from './app/libs/credential-verifier';
 
 let webSocketClient: WebSocket;
 
@@ -20,7 +22,7 @@ app.use(express.urlencoded({ extended: true, limit: '20mb' }));
 const server = http.createServer(app);
 
 // Attach WebSocket server to HTTP server
-const wss = new WebSocketServer({ server, path: '/ws' });
+const wss = new WebSocketServer({ server, path: `${webPrefix}/ws` });
 
 wss.on('connection', (ws, req) => {
     console.log('A client connected');
@@ -43,15 +45,15 @@ wss.on('connection', (ws, req) => {
     });
 });
 
-app.get('/', (req, res) => {
+app.get(`${webPrefix}`, (req, res) => {
     res.json({ success: 'Express' });
 });
 
-app.post('/ooru/callback', (req: Request, res: Response) => {
+app.post(`${webPrefix}/${webCallbackRoute}`, (req: Request, res: Response) => {
     console.log("Got response from ooru", req.body);
     const payload = req.body;
 
-    const { vp_token, presentation_submission, state } = payload;
+    //const { vp_token, presentation_submission, state } = payload;
     // if (!vp_token) {
     //     res.status(400).json({ error: 'Missing required fields in the request body' });
     //     return
@@ -63,6 +65,28 @@ app.post('/ooru/callback', (req: Request, res: Response) => {
     } else {
         res.status(400).json({ error: 'WebSocket client not connected, refersh the client to connect' });
     }
+});
+
+app.post(`${webPrefix}/${webVerifyRoute}`, async (req: Request, res: Response) => {
+    console.log("Verification process started");
+    const { data_received } = req.body;
+
+    let result;
+    const type = detectVCorVP(data_received);
+    if (type === "unknown") {
+        res.status(400).json({ isValid: false, errors: 'Unknown type of data received' })
+        return;
+    } else if (type === "vc") {
+        result = await verifyCredentials({
+            verifiableCredentials: !Array.isArray(data_received) ? [data_received] : data_received,
+        });
+    } else if (type === "vp") {
+        result = await verifyPresentation({
+            verifiablePresentation: data_received,
+        });
+    }
+
+    res.json(result)
 });
 
 // Start both servers on same port

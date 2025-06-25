@@ -4,7 +4,7 @@ import {
   privateKey,
   projectId,
   tokenId,
-} from "@/secrets";
+} from "../../secrets";
 import { AuthProvider } from "@affinidi-tdk/auth-provider";
 
 
