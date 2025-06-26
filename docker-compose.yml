@@ -13,9 +13,9 @@ services:
       # - "4000:4000" # Optional: WebSocket access
     environment:
       NODE_ENV: development
-      NEXT_PUBLIC_HOST: https://marmot-suited-muskrat.ngrok-free.app
+      NEXT_PUBLIC_HOST: https://preferably-in-teal.ngrok-free.app
       NEXT_PUBLIC_SERVER_PORT: 4000
-      NEXT_PUBLIC_SERVER_SOCKET_URL: wss://marmot-suited-muskrat.ngrok-free.app/backend/ws
-      NEXT_PUBLIC_SERVER_URL: https://marmot-suited-muskrat.ngrok-free.app/backend
+      NEXT_PUBLIC_SERVER_SOCKET_URL: wss://preferably-in-teal.ngrok-free.app/backend/ws
+      NEXT_PUBLIC_SERVER_URL: https://preferably-in-teal.ngrok-free.app/backend
 
     restart: unless-stopped
