@@ -44,8 +44,16 @@ const FeatureListItem = ({
   iconColor: string;
   isDarkMode: boolean; // Pass isDarkMode prop
 }) => (
-  <li className={`flex items-start ${isDarkMode ? "text-gray-300" : "text-gray-700"}`}>
-    <svg className={`h-4 w-4 ${iconColor} mr-2 mt-1 flex-shrink-0`} fill="currentColor" viewBox="0 0 20 20">
+  <li
+    className={`flex items-start ${
+      isDarkMode ? "text-gray-300" : "text-gray-700"
+    }`}
+  >
+    <svg
+      className={`h-4 w-4 ${iconColor} mr-2 mt-1 flex-shrink-0`}
+      fill="currentColor"
+      viewBox="0 0 20 20"
+    >
       <path
         fillRule="evenodd"
         d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
@@ -53,8 +61,14 @@ const FeatureListItem = ({
       />
     </svg>
     <div className="flex flex-col">
-      <h4 className={`font-semibold text-sm ${isDarkMode ? "text-white" : ""}`}>{title}</h4>
-      <p className={`text-xs ${isDarkMode ? "text-gray-400" : "text-gray-600"}`}>{description}</p>
+      <h4 className={`font-semibold text-sm ${isDarkMode ? "text-white" : ""}`}>
+        {title}
+      </h4>
+      <p
+        className={`text-xs ${isDarkMode ? "text-gray-400" : "text-gray-600"}`}
+      >
+        {description}
+      </p>
     </div>
   </li>
 );
@@ -287,7 +301,9 @@ export default function Home() {
         if (vp_token) {
           const vpToken = JSON.parse(vp_token);
           // Handle both array of strings and single string for verifiableCredential
-          const verifiableCredentials = Array.isArray(vpToken.verifiableCredential)
+          const verifiableCredentials = Array.isArray(
+            vpToken.verifiableCredential
+          )
             ? vpToken.verifiableCredential
             : [vpToken.verifiableCredential];
 
@@ -397,19 +413,52 @@ export default function Home() {
         </button>
 
         <div className="flex items-center justify-center mb-3">
-          <div className="bg-gradient-to-br from-blue-600 to-indigo-700 text-white font-bold text-xl rounded-full h-14 w-14 flex items-center justify-center shadow-lg transform transition-transform duration-300 hover:scale-105">
+          <div className="bg-gradient-to-br text-white font-bold text-xl rounded-full h-14 w-14 flex items-center justify-center shadow-lg transform transition-transform duration-300 hover:scale-105">
+            (
             <svg
+              version="1.1"
+              id="Layer_1"
               xmlns="http://www.w3.org/2000/svg"
-              className="h-8 w-8"
-              viewBox="0 0 20 20"
-              fill="currentColor"
+              xmlnsXlink="http://www.w3.org/1999/xlink"
+              x="0px"
+              y="0px"
+              viewBox="0 0 222.4 188"
+              enableBackground="new 0 0 222.4 188"
+              xmlSpace="preserve"
             >
               <path
-                fillRule="evenodd"
-                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                clipRule="evenodd"
+                fill="#010101"
+                d="M25.2,158.3c17,17.8,41,28.9,67.5,28.9c26.5,0,50.5-11.1,67.5-28.9H25.2L25.2,158.3z"
+              />
+              <path
+                fill="#010101"
+                d="M160.2,53.2H8.7c-4.3,8.9-7.3,18.7-8.6,28.9h160.1V53.2z"
+              />
+              <path
+                fill="#010101"
+                d="M160.2,29.6c-17-17.8-41-28.9-67.5-28.9c-26.6,0-50.5,11.1-67.5,28.9H160.2z"
+              />
+              <path
+                fill="#010101"
+                d="M160.2,105.8H0.1c1.3,10.2,4.3,20,8.6,28.9h151.5V105.8z"
+              />
+              <path
+                fill="#010101"
+                d="M176.6,53.2c4.3,8.9,7.3,18.7,8.6,28.9h37.2V53.2H176.6z"
+              />
+              <path fill="#010101" d="M222.4,158.3h-62.2v28.9h62.2V158.3z" />
+              <path
+                fill="#010101"
+                d="M176.6,134.7h45.8v-28.9h-37.2C183.9,116,181,125.7,176.6,134.7z"
+              />
+              <path fill="#010101" d="M222.4,0.6h-62.2v28.9h62.2V0.6z" />
+              <path
+                fill="#3464FD"
+                d="M185.2,82.1c-1.3-10.2-4.3-20-8.6-28.9c-4.2-8.7-9.8-16.7-16.4-23.6v128.8c6.6-6.9,12.2-14.9,16.4-23.6
+      c4.3-8.9,7.3-18.7,8.6-28.9c0.5-3.9,0.7-7.8,0.7-11.8C186,89.9,185.7,86,185.2,82.1L185.2,82.1z"
               />
             </svg>
+            )
           </div>
         </div>
         <h1
@@ -433,8 +482,8 @@ export default function Home() {
             isDarkMode ? "text-gray-400" : "text-gray-500"
           }`}
         >
-          (Powered by Affinidi’s decentralized trust infrastructure: Temasek-backed. Open
-          Standards. Borderless.)
+          (Powered by Affinidi’s decentralized trust infrastructure:
+          Temasek-backed. Open Standards. Borderless.)
         </p>
       </header>
 
@@ -444,7 +493,9 @@ export default function Home() {
         {/* Make this panel itself a flex container with overflow-auto */}
         <div
           className={`rounded-3xl shadow-xl p-6 flex flex-col items-center text-center border ${
-            isDarkMode ? "border-gray-700 bg-gray-800" : "border-gray-100 bg-white"
+            isDarkMode
+              ? "border-gray-700 bg-gray-800"
+              : "border-gray-100 bg-white"
           } transition-colors duration-500 hover:shadow-2xl overflow-auto`}
         >
           <h2
@@ -497,7 +548,11 @@ export default function Home() {
           <div
             ref={qrCodeRef}
             className={`p-5 rounded-xl border shadow-lg relative overflow-hidden transform transition-transform duration-300 hover:scale-105 flex-shrink-0
-            ${isDarkMode ? "bg-white border-gray-700" : "bg-white border-gray-200"}
+            ${
+              isDarkMode
+                ? "bg-white border-gray-700"
+                : "bg-white border-gray-200"
+            }
             min-w-[280px] min-h-[280px] flex items-center justify-center`} // Added min-w and min-h directly as Tailwind classes
           >
             <QRCode
@@ -540,7 +595,9 @@ export default function Home() {
               <button
                 onClick={() => setShowSimulateLink(false)}
                 className={`ml-2 p-1 rounded-full hover:bg-gray-200 transition-colors ${
-                  isDarkMode ? "text-gray-400 hover:bg-gray-700" : "text-gray-500"
+                  isDarkMode
+                    ? "text-gray-400 hover:bg-gray-700"
+                    : "text-gray-500"
                 }`}
                 aria-label="Hide simulation link"
               >
@@ -567,7 +624,9 @@ export default function Home() {
         {/* Make this panel itself a flex container with overflow-auto */}
         <div
           className={`rounded-3xl shadow-xl p-6 flex flex-col border transition-all duration-300 hover:shadow-2xl ${
-            isDarkMode ? "border-gray-700 bg-gray-800" : "border-gray-100 bg-white"
+            isDarkMode
+              ? "border-gray-700 bg-gray-800"
+              : "border-gray-100 bg-white"
           } overflow-auto`}
         >
           <h2
@@ -585,7 +644,9 @@ export default function Home() {
             Once you scan the QR, your credential will be verified in real-time
             using{" "}
             <span
-              className={`font-bold ${isDarkMode ? "text-blue-400" : "text-blue-600"}`}
+              className={`font-bold ${
+                isDarkMode ? "text-blue-400" : "text-blue-600"
+              }`}
             >
               cryptographic proof
             </span>{" "}
@@ -631,7 +692,9 @@ export default function Home() {
           {status === "failure" && errorMessages.length > 0 && (
             <div
               className={`mt-auto bg-red-50 border-l-4 border-red-400 text-red-700 p-3 rounded-r-lg shadow-sm transition-all duration-300 animate-fade-in flex-shrink-0 ${
-                isDarkMode ? "bg-red-900 bg-opacity-30 border-red-600 text-red-300" : ""
+                isDarkMode
+                  ? "bg-red-900 bg-opacity-30 border-red-600 text-red-300"
+                  : ""
               }`}
               role="alert"
             >
@@ -680,13 +743,17 @@ export default function Home() {
         <p className="font-medium leading-relaxed">
           A live demonstration of{" "}
           <span
-            className={`font-bold ${isDarkMode ? "text-blue-400" : "text-blue-700"}`}
+            className={`font-bold ${
+              isDarkMode ? "text-blue-400" : "text-blue-700"
+            }`}
           >
             person-centric trust
           </span>{" "}
           in action – enabling seamless,
           <span
-            className={`font-bold ${isDarkMode ? "text-blue-400" : "text-blue-700"}`}
+            className={`font-bold ${
+              isDarkMode ? "text-blue-400" : "text-blue-700"
+            }`}
           >
             {" "}
             standards-based credential exchange
