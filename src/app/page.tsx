@@ -32,15 +32,13 @@ const StatusBadge = ({
   </div>
 );
 
-// Helper component for feature list items with title and description
+// Helper component for feature list items with title
 const FeatureListItem = ({
   title,
-  description,
   iconColor,
   isDarkMode,
 }: {
   title: string;
-  description: string;
   iconColor: string;
   isDarkMode: boolean; // Pass isDarkMode prop
 }) => (
@@ -64,11 +62,6 @@ const FeatureListItem = ({
       <h4 className={`font-semibold text-sm ${isDarkMode ? "text-white" : ""}`}>
         {title}
       </h4>
-      <p
-        className={`text-xs ${isDarkMode ? "text-gray-400" : "text-gray-600"}`}
-      >
-        {description}
-      </p>
     </div>
   </li>
 );
@@ -412,62 +405,13 @@ export default function Home() {
           )}
         </button>
 
-        <div className="flex items-center justify-center mb-3">
-          <div className="bg-gradient-to-br text-white font-bold text-xl rounded-full h-14 w-14 flex items-center justify-center shadow-lg transform transition-transform duration-300 hover:scale-105">
-            (
-            <svg
-              version="1.1"
-              id="Layer_1"
-              xmlns="http://www.w3.org/2000/svg"
-              xmlnsXlink="http://www.w3.org/1999/xlink"
-              x="0px"
-              y="0px"
-              viewBox="0 0 222.4 188"
-              enableBackground="new 0 0 222.4 188"
-              xmlSpace="preserve"
-            >
-              <path
-                fill="#010101"
-                d="M25.2,158.3c17,17.8,41,28.9,67.5,28.9c26.5,0,50.5-11.1,67.5-28.9H25.2L25.2,158.3z"
-              />
-              <path
-                fill="#010101"
-                d="M160.2,53.2H8.7c-4.3,8.9-7.3,18.7-8.6,28.9h160.1V53.2z"
-              />
-              <path
-                fill="#010101"
-                d="M160.2,29.6c-17-17.8-41-28.9-67.5-28.9c-26.6,0-50.5,11.1-67.5,28.9H160.2z"
-              />
-              <path
-                fill="#010101"
-                d="M160.2,105.8H0.1c1.3,10.2,4.3,20,8.6,28.9h151.5V105.8z"
-              />
-              <path
-                fill="#010101"
-                d="M176.6,53.2c4.3,8.9,7.3,18.7,8.6,28.9h37.2V53.2H176.6z"
-              />
-              <path fill="#010101" d="M222.4,158.3h-62.2v28.9h62.2V158.3z" />
-              <path
-                fill="#010101"
-                d="M176.6,134.7h45.8v-28.9h-37.2C183.9,116,181,125.7,176.6,134.7z"
-              />
-              <path fill="#010101" d="M222.4,0.6h-62.2v28.9h62.2V0.6z" />
-              <path
-                fill="#3464FD"
-                d="M185.2,82.1c-1.3-10.2-4.3-20-8.6-28.9c-4.2-8.7-9.8-16.7-16.4-23.6v128.8c6.6-6.9,12.2-14.9,16.4-23.6
-      c4.3-8.9,7.3-18.7,8.6-28.9c0.5-3.9,0.7-7.8,0.7-11.8C186,89.9,185.7,86,185.2,82.1L185.2,82.1z"
-              />
-            </svg>
-            )
-          </div>
-        </div>
+
         <h1
           className={`text-3xl sm:text-4xl font-extrabold leading-tight tracking-tight mb-2 ${
             isDarkMode ? "text-white" : "text-gray-900"
           }`}
         >
-          Trusted Education Record Verification — Anytime, Anywhere, Controlled
-          by YOU
+          Trusted Worker Credential Verification
         </h1>
         <p
           className={`text-lg max-w-2xl mx-auto mb-1 ${
@@ -478,12 +422,17 @@ export default function Home() {
           wallet.
         </p>
         <p
-          className={`text-sm font-medium ${
+          className={`text-sm font-medium flex items-center justify-center ${
             isDarkMode ? "text-gray-400" : "text-gray-500"
           }`}
         >
-          (Powered by Affinidi’s decentralized trust infrastructure:
-          Temasek-backed. Open Standards. Borderless.)
+          Powered by{" "}
+          <img
+            src="/Affinidi.png"
+            alt="Affinidi Logo"
+            className="h-4 w-auto mx-1 inline-block"
+          />{" "}
+          - a Temasek-backed decentralised trust network
         </p>
       </header>
 
@@ -503,14 +452,14 @@ export default function Home() {
               isDarkMode ? "text-white" : "text-gray-800"
             }`}
           >
-            Share Your Credential
+            Share your global career credentials
           </h2>
           <p
             className={`text-base mb-4 max-w-md ${
               isDarkMode ? "text-gray-300" : "text-gray-600"
             }`}
           >
-            Your secure gateway to sharing academic achievements.
+            Easily share your portable, trusted records for global opportunities
           </p>
 
           <ul
@@ -520,19 +469,16 @@ export default function Home() {
           >
             <FeatureListItem
               title="W3C VC Compatible"
-              description="Your education records in W3C Verifiable Credentials format."
               iconColor={isDarkMode ? "text-blue-400" : "text-blue-500"}
               isDarkMode={isDarkMode}
             />
             <FeatureListItem
               title="User-Controlled"
-              description="No intermediaries; you stay in control."
               iconColor={isDarkMode ? "text-blue-400" : "text-blue-500"}
               isDarkMode={isDarkMode}
             />
             <FeatureListItem
               title="Standards-Based"
-              description="Leveraging Verifiable Credentials + OpenID."
               iconColor={isDarkMode ? "text-blue-400" : "text-blue-500"}
               isDarkMode={isDarkMode}
             />
@@ -557,7 +503,7 @@ export default function Home() {
           >
             <QRCode
               value={openidUrl}
-              size={240} // Adjusted size to fit within the 280px container with p-5 (20px) padding
+              size={320} // Adjusted size to fit within the 280px container with p-5 (20px) padding
               fgColor="#000000" // Pure black
               bgColor="#FFFFFF" // Pure white
               level="H" // High error correction
@@ -634,21 +580,20 @@ export default function Home() {
               isDarkMode ? "text-white" : "text-gray-800"
             }`}
           >
-            Verification Status
+            Check your verification status
           </h2>
           <p
             className={`text-base mb-4 max-w-md flex-shrink-0 ${
               isDarkMode ? "text-gray-300" : "text-gray-600"
             }`}
           >
-            Once you scan the QR, your credential will be verified in real-time
-            using{" "}
+            Fast, paperless{" "}
             <span
               className={`font-bold ${
                 isDarkMode ? "text-blue-400" : "text-blue-600"
               }`}
             >
-              cryptographic proof
+              cryptographic Secure proof
             </span>{" "}
             –{" "}
             <span
@@ -656,7 +601,7 @@ export default function Home() {
                 isDarkMode ? "text-gray-300" : "text-gray-700"
               }`}
             >
-              no username, no password, no paperwork.
+              for any employer or screening service
             </span>
           </p>
 
@@ -671,19 +616,16 @@ export default function Home() {
           >
             <FeatureListItem
               title="Secure & Private"
-              description="Tamper-evident and privacy-preserving."
               iconColor={isDarkMode ? "text-green-400" : "text-green-500"}
               isDarkMode={isDarkMode}
             />
             <FeatureListItem
               title="Globally Compliant"
-              description="Meets global interoperability standards."
               iconColor={isDarkMode ? "text-green-400" : "text-green-500"}
               isDarkMode={isDarkMode}
             />
             <FeatureListItem
               title="Reusable & Portable"
-              description="Credentials for future opportunities."
               iconColor={isDarkMode ? "text-green-400" : "text-green-500"}
               isDarkMode={isDarkMode}
             />
@@ -733,34 +675,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      {/* FOOTER */}
-      <footer
-        className={`mt-6 text-center text-sm max-w-3xl px-4 flex-shrink-0 ${
-          isDarkMode ? "text-gray-400" : "text-gray-600"
-        }`}
-      >
-        <p className="font-medium leading-relaxed">
-          A live demonstration of{" "}
-          <span
-            className={`font-bold ${
-              isDarkMode ? "text-blue-400" : "text-blue-700"
-            }`}
-          >
-            person-centric trust
-          </span>{" "}
-          in action – enabling seamless,
-          <span
-            className={`font-bold ${
-              isDarkMode ? "text-blue-400" : "text-blue-700"
-            }`}
-          >
-            {" "}
-            standards-based credential exchange
-          </span>{" "}
-          across borders, starting with education.
-        </p>
-      </footer>
     </main>
   );
 }
