@@ -6,7 +6,7 @@ import "react-json-pretty/themes/monikai.css"; // Keep this theme for light mode
 import { webUrl, webSocketUrl } from "@/variables";
 import { v4 as uuidv4 } from "uuid";
 import crypto from "crypto";
-import Link from "next/link";
+// import Link from "next/link"; // Link is not used, can be removed if no future plans
 
 // Helper component for status display
 const StatusBadge = ({
@@ -229,7 +229,6 @@ export default function Home() {
   const [jsonResponse, setJsonResponse] = useState<any>(null);
   const [errorMessages, setErrorMessages] = useState<string[]>([]);
   const [openidUrl, setOpenidUrl] = useState("");
-  const [showSimulateLink, setShowSimulateLink] = useState(true);
   const [isDarkMode, setIsDarkMode] = useState(false); // State for dark mode
 
   const qrCodeRef = useRef<HTMLDivElement>(null);
@@ -354,14 +353,18 @@ export default function Home() {
     }
   };
 
+  // The QR Code component is size=280.
+  // Its parent div has p-5 (20px top/bottom padding).
+  // So, the total height of the QR code's visual block is 280 (QR) + 20 (p-top) + 20 (p-bottom) = 320px.
+  const contentBlockTotalHeight = 280 + 2 * 20; // 320px
+
   return (
-    // Set h-screen and flex-col for the main container
     <main
       className={`h-screen flex flex-col items-center justify-between p-6 font-sans ${
         isDarkMode ? "bg-gray-900" : "bg-gray-50"
       } text-gray-800 transition-colors duration-500`}
     >
-      <header className="text-center w-full max-w-4xl mx-auto mb-4 mt-2 flex-shrink-0">
+      <header className="w-full max-w-4xl mx-auto mb-4 mt-2 flex-shrink-0">
         {/* Theme Toggle Button */}
         <button
           onClick={() => setIsDarkMode(!isDarkMode)}
@@ -405,21 +408,20 @@ export default function Home() {
           )}
         </button>
 
-
         <h1
-          className={`text-3xl sm:text-4xl font-extrabold leading-tight tracking-tight mb-2 ${
+          className={`text-3xl sm:text-4xl font-extrabold leading-tight tracking-tight mb-2 text-center ${
             isDarkMode ? "text-white" : "text-gray-900"
           }`}
         >
           Trusted Worker Credential Verification
         </h1>
         <p
-          className={`text-lg max-w-2xl mx-auto mb-1 ${
+          className={`text-base max-w-2xl mx-auto mb-1 text-center ${
             isDarkMode ? "text-gray-300" : "text-gray-600"
           }`}
         >
-          Instant, cross-border credential verification from your own digital ID
-          wallet.
+          Instant, cross-border credential verification from your own Digital ID
+          wallet
         </p>
         <p
           className={`text-sm font-medium flex items-center justify-center ${
@@ -436,19 +438,17 @@ export default function Home() {
         </p>
       </header>
 
-      {/* Main content section - use flex-auto to fill available vertical space */}
-      <section className="grid grid-cols-1 lg:grid-cols-2 gap-6 w-full max-w-6xl flex-auto overflow-hidden">
+      <section className="grid grid-cols-1 lg:grid-cols-2 gap-6 w-full max-w-6xl flex-grow">
         {/* LEFT PANEL: Share Your Credential */}
-        {/* Make this panel itself a flex container with overflow-auto */}
         <div
-          className={`rounded-3xl shadow-xl p-6 flex flex-col items-center text-center border ${
+          className={`rounded-3xl shadow-xl p-6 flex flex-col items-start text-left border ${
             isDarkMode
               ? "border-gray-700 bg-gray-800"
               : "border-gray-100 bg-white"
           } transition-colors duration-500 hover:shadow-2xl overflow-auto`}
         >
           <h2
-            className={`text-2xl font-bold mb-3 ${
+            className={`text-2xl sm:text-3xl font-semibold mb-3 ${
               isDarkMode ? "text-white" : "text-gray-800"
             }`}
           >
@@ -468,24 +468,24 @@ export default function Home() {
             }`}
           >
             <FeatureListItem
-              title="W3C VC Compatible"
+              title="User controlled"
               iconColor={isDarkMode ? "text-blue-400" : "text-blue-500"}
               isDarkMode={isDarkMode}
             />
             <FeatureListItem
-              title="User-Controlled"
+              title="Portable and secure"
               iconColor={isDarkMode ? "text-blue-400" : "text-blue-500"}
               isDarkMode={isDarkMode}
             />
             <FeatureListItem
-              title="Standards-Based"
+              title="Trusted globally"
               iconColor={isDarkMode ? "text-blue-400" : "text-blue-500"}
               isDarkMode={isDarkMode}
             />
           </ul>
 
           <p
-            className={`text-lg font-semibold mb-4 flex-shrink-0 ${
+            className={`text-lg font-semibold mb-4 flex-shrink-0 text-center w-full ${
               isDarkMode ? "text-white" : "text-gray-800"
             }`}
           >
@@ -499,75 +499,23 @@ export default function Home() {
                 ? "bg-white border-gray-700"
                 : "bg-white border-gray-200"
             }
-            min-w-[280px] min-h-[280px] flex items-center justify-center`} // Added min-w and min-h directly as Tailwind classes
+            flex items-center justify-center mx-auto`}
+            style={{
+              width: `${contentBlockTotalHeight}px`,
+              height: `${contentBlockTotalHeight}px`,
+            }} // Fixed size including padding
           >
             <QRCode
               value={openidUrl}
-              size={320} // Adjusted size to fit within the 280px container with p-5 (20px) padding
-              fgColor="#000000" // Pure black
-              bgColor="#FFFFFF" // Pure white
-              level="H" // High error correction
+              size={280} // Size of the QR code itself
+              fgColor="#000000"
+              bgColor="#FFFFFF"
+              level="H"
             />
-            <div className="absolute inset-0 bg-blue-50 opacity-0 transition-opacity duration-300 hover:opacity-10 pointer-events-none"></div>
           </div>
-
-          {showSimulateLink && (
-            <div className="mt-4 flex items-center justify-center group flex-shrink-0">
-              <Link
-                target="_blank"
-                href="/respond"
-                className={`inline-flex items-center text-sm ${
-                  isDarkMode
-                    ? "text-blue-400 hover:text-blue-300"
-                    : "text-blue-600 hover:text-blue-800"
-                } transition-colors font-medium`}
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-4 w-4 mr-1 group-hover:animate-pulse"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  strokeWidth={2}
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M13 10V3L4 14h7v7l9-11h-7z"
-                  />
-                </svg>
-                <span>Or click here to simulate a credential response</span>
-              </Link>
-              <button
-                onClick={() => setShowSimulateLink(false)}
-                className={`ml-2 p-1 rounded-full hover:bg-gray-200 transition-colors ${
-                  isDarkMode
-                    ? "text-gray-400 hover:bg-gray-700"
-                    : "text-gray-500"
-                }`}
-                aria-label="Hide simulation link"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-3 w-3"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  strokeWidth={2}
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M6 18L18 6M6 6l12 12"
-                  />
-                </svg>
-              </button>
-            </div>
-          )}
         </div>
 
         {/* RIGHT PANEL: Verification Status */}
-        {/* Make this panel itself a flex container with overflow-auto */}
         <div
           className={`rounded-3xl shadow-xl p-6 flex flex-col border transition-all duration-300 hover:shadow-2xl ${
             isDarkMode
@@ -576,7 +524,7 @@ export default function Home() {
           } overflow-auto`}
         >
           <h2
-            className={`text-2xl font-bold mb-3 flex-shrink-0 ${
+            className={`text-2xl sm:text-3xl font-semibold mb-3 flex-shrink-0 ${
               isDarkMode ? "text-white" : "text-gray-800"
             }`}
           >
@@ -615,66 +563,80 @@ export default function Home() {
             }`}
           >
             <FeatureListItem
-              title="Secure & Private"
+              title="Fast verification"
               iconColor={isDarkMode ? "text-green-400" : "text-green-500"}
               isDarkMode={isDarkMode}
             />
             <FeatureListItem
-              title="Globally Compliant"
+              title="No login, no forms"
               iconColor={isDarkMode ? "text-green-400" : "text-green-500"}
               isDarkMode={isDarkMode}
             />
             <FeatureListItem
-              title="Reusable & Portable"
+              title="Cryptographically secure"
               iconColor={isDarkMode ? "text-green-400" : "text-green-500"}
               isDarkMode={isDarkMode}
             />
           </ul>
 
-          {status === "failure" && errorMessages.length > 0 && (
-            <div
-              className={`mt-auto bg-red-50 border-l-4 border-red-400 text-red-700 p-3 rounded-r-lg shadow-sm transition-all duration-300 animate-fade-in flex-shrink-0 ${
-                isDarkMode
-                  ? "bg-red-900 bg-opacity-30 border-red-600 text-red-300"
-                  : ""
-              }`}
-              role="alert"
-            >
-              <p className="font-bold text-sm mb-1">Error Details</p>
-              <ul className="list-disc list-inside text-xs space-y-0.5">
-                {errorMessages.map((err, idx) => (
-                  <li key={idx}>{err}</li>
-                ))}
-              </ul>
-            </div>
-          )}
+          {/* New wrapper to control bottom alignment within the right panel */}
+          <div className="flex-grow flex flex-col justify-end">
+            {status === "failure" && errorMessages.length > 0 && (
+              <div
+                // Removed mt-auto from here. Added mb-4 for spacing to the JSON box.
+                className={`bg-red-50 border-l-4 border-red-400 text-red-700 p-3 rounded-r-lg shadow-sm transition-all duration-300 animate-fade-in flex-shrink-0 mb-4 ${
+                  isDarkMode
+                    ? "bg-red-900 bg-opacity-30 border-red-600 text-red-300"
+                    : ""
+                }`}
+                role="alert"
+              >
+                <p className="font-bold text-sm mb-1">Error Details</p>
+                <ul className="list-disc list-inside text-xs space-y-0.5">
+                  {errorMessages.map((err, idx) => (
+                    <li key={idx}>{err}</li>
+                  ))}
+                </ul>
+              </div>
+            )}
 
-          <div className="mt-4 pt-4 border-t border-gray-100 flex-shrink-0">
-            <h3
-              className={`text-lg font-semibold mb-2 ${
-                isDarkMode ? "text-white" : "text-gray-800"
-              }`}
-            >
-              Raw Response Data
-            </h3>
-            <div
-              className={`rounded-lg p-3 overflow-y-auto max-h-[150px] text-xs font-mono shadow-inner border ${
-                isDarkMode
-                  ? "bg-gray-950 text-gray-300 border-gray-700" // Text color here primarily for "Awaiting response..."
-                  : "bg-gray-900 text-white border-gray-700" // Monokai theme works well with dark background
-              }`}
-            >
-              {jsonResponse ? (
-                // react-json-pretty's monokai theme is dark by default, so we mostly let it handle the colors.
-                // If you need it to be truly light mode friendly, you might need a different theme or custom CSS.
-                <JSONPretty data={jsonResponse}></JSONPretty>
-              ) : (
-                <p className="text-gray-400">Awaiting response...</p>
-              )}
+            <div className="pt-4 border-t border-gray-100 flex-shrink-0">
+              <h3
+                className={`text-lg font-semibold mb-2 ${
+                  isDarkMode ? "text-white" : "text-gray-800"
+                }`}
+              >
+                Raw Response Data
+              </h3>
+              <div
+                className={`rounded-lg p-5 overflow-y-auto text-xs font-mono shadow-inner border flex items-center justify-center ${
+                  isDarkMode
+                    ? "bg-gray-950 text-gray-300 border-gray-700"
+                    : "bg-gray-900 text-white border-gray-700"
+                }`}
+                style={{ height: "280px" }} // Fixed height matching QR block
+              >
+                {jsonResponse ? (
+                  <JSONPretty data={jsonResponse}></JSONPretty>
+                ) : (
+                  <p className="text-gray-400 text-base text-center">
+                    Awaiting response...
+                  </p>
+                )}
+              </div>
             </div>
           </div>
         </div>
       </section>
+
+      {/* Footer Section - kept clean with fixed space */}
+      <footer
+        className={`mt-6 h-20 w-full flex-shrink-0 ${
+          isDarkMode ? "bg-gray-900" : "bg-gray-50" // Ensure background matches main for clean aesthetic
+        } transition-colors duration-500`}
+      >
+        {/* Intentionally left blank as per request to keep space without text */}
+      </footer>
     </main>
   );
 }
