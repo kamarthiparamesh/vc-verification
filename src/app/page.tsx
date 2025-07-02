@@ -592,7 +592,7 @@ export default function Home() {
                 Raw response data:
               </h3>
               <div
-                className={`rounded-lg p-5 overflow-y-auto text-xs font-mono shadow-inner border flex items-center justify-center ${
+                className={`rounded-lg p-5 overflow-y-auto text-xs font-mono shadow-inner border flex ${
                   isDarkMode
                     ? "bg-gray-950 text-gray-300 border-gray-700"
                     : "bg-gray-900 text-white border-gray-700"
