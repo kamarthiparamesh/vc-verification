@@ -356,7 +356,7 @@ export default function Home() {
   // The QR Code component is size=280.
   // Its parent div has p-5 (20px top/bottom padding).
   // So, the total height of the QR code's visual block is 280 (QR) + 20 (p-top) + 20 (p-bottom) = 320px.
-  const contentBlockTotalHeight = 280 + 2 * 20; // 320px
+  const contentBlockTotalHeight = 380; // 380px
 
   return (
     <main
@@ -507,7 +507,7 @@ export default function Home() {
           >
             <QRCode
               value={openidUrl}
-              size={280} // Size of the QR code itself
+              size={320} // Size of the QR code itself
               fgColor="#000000"
               bgColor="#FFFFFF"
               level="H"
