@@ -413,7 +413,7 @@ export default function Home() {
             isDarkMode ? "text-white" : "text-gray-900"
           }`}
         >
-          Trusted Worker Credential Verification
+          Enabling Cross-Border Trust for Global Hiring
         </h1>
         <p
           className={`text-base max-w-2xl mx-auto mb-1 text-center ${
@@ -459,7 +459,7 @@ export default function Home() {
               isDarkMode ? "text-gray-300" : "text-gray-600"
             }`}
           >
-            Easily share your portable, trusted records for global opportunities
+            Easily share your portable, trusted records
           </p>
 
           <ul
@@ -528,34 +528,15 @@ export default function Home() {
               isDarkMode ? "text-white" : "text-gray-800"
             }`}
           >
-            Check your verification status
+            Check your credentials verification status{" "}
           </h2>
           <p
-            className={`text-base mb-4 max-w-md flex-shrink-0 ${
+            className={`text-base mb-4 max-w-md ${
               isDarkMode ? "text-gray-300" : "text-gray-600"
             }`}
           >
-            Fast, paperless{" "}
-            <span
-              className={`font-bold ${
-                isDarkMode ? "text-blue-400" : "text-blue-600"
-              }`}
-            >
-              cryptographic Secure proof
-            </span>{" "}
-            –{" "}
-            <span
-              className={`font-semibold italic ${
-                isDarkMode ? "text-gray-300" : "text-gray-700"
-              }`}
-            >
-              for any employer or screening service
-            </span>
+            Processing your credential for authenticity and integrity
           </p>
-
-          <div className="mb-4 flex-shrink-0">
-            <StatusBadge {...statusDetails[status]} isDarkMode={isDarkMode} />
-          </div>
 
           <ul
             className={`text-left space-y-2 mb-4 ${
@@ -564,21 +545,23 @@ export default function Home() {
           >
             <FeatureListItem
               title="Fast verification"
-              iconColor={isDarkMode ? "text-green-400" : "text-green-500"}
+              iconColor={isDarkMode ? "text-green-400" : "text-blue-500"}
               isDarkMode={isDarkMode}
             />
             <FeatureListItem
               title="No login, no forms"
-              iconColor={isDarkMode ? "text-green-400" : "text-green-500"}
+              iconColor={isDarkMode ? "text-green-400" : "text-blue-500"}
               isDarkMode={isDarkMode}
             />
             <FeatureListItem
               title="Cryptographically secure"
-              iconColor={isDarkMode ? "text-green-400" : "text-green-500"}
+              iconColor={isDarkMode ? "text-green-400" : "text-blue-500"}
               isDarkMode={isDarkMode}
             />
           </ul>
-
+          <div className="mb-4 flex-shrink-0">
+            <StatusBadge {...statusDetails[status]} isDarkMode={isDarkMode} />
+          </div>
           {/* New wrapper to control bottom alignment within the right panel */}
           <div className="flex-grow flex flex-col justify-end">
             {status === "failure" && errorMessages.length > 0 && (
@@ -606,7 +589,7 @@ export default function Home() {
                   isDarkMode ? "text-white" : "text-gray-800"
                 }`}
               >
-                Raw Response Data
+                Raw response data:
               </h3>
               <div
                 className={`rounded-lg p-5 overflow-y-auto text-xs font-mono shadow-inner border flex items-center justify-center ${
